@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compare RegDOX | RegDOX Solutions</title>
-<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE vs the typical MSP-built enclave: no VDI, no tenant migration, no ongoing MSP services. Line-by-line comparison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,6 +369,13 @@
   .topbar a.nav-todo:hover{opacity:.65;}
   .topbar a.nav-todo .d-nm::after{content:" \00B7 to build";font-family:var(--font-mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--warn-bright);opacity:.9;}
 </style>
+<style>
+  .bet{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px dotted var(--line);}
+  .bet:last-of-type{border-bottom:none;}
+  .bet .n{font-family:var(--font-mono);font-weight:600;font-size:20px;color:var(--accent);flex:none;line-height:1.2;}
+  .bet h4{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0;color:var(--ink);}
+  .bet p{font-size:14.5px;color:#42566F;line-height:1.6;margin:6px 0 0;max-width:52em;}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -424,6 +430,20 @@
 <span class="mark" style="justify-content:center;">Compare RegDOX</span>
 <h1>Same secure enclave. <span class="accent">Half the moving parts.</span></h1>
 <p class="sub">Most CMMC enclaves are assembled for you: GCC High licensing, a virtual desktop per user, and an MSP contract to keep it all running. RegDOX CCE is built as one platform. Here is the difference, line by line.</p>
+</div></section>
+
+
+<!-- ===== HOW TO COMPARE (power positioning, customer-facing) ===== -->
+<section class="light light-alt" style="border-bottom:1px solid var(--line);"><div class="wrap">
+<span class="mark on-light">Before you compare</span>
+<h2 class="sectitle">Five things to know before you compare anything</h2>
+<div style="margin-top:34px;">
+<div class="bet reveal"><span class="n">01</span><div><h4>Architecture decides scope</h4><p>Where CUI lives determines what gets assessed. An environment where CUI never lands on a device shrinks the boundary by design. One where it syncs to laptops or sits in mailboxes drags all of it in. Everything else on a vendor's feature list is downstream of this.</p></div></div>
+<div class="bet reveal d1"><span class="n">02</span><div><h4>Scope is the biggest cost in CMMC</h4><p>Assessment scope is the single largest driver of certification cost, time, and audit risk. Every asset that touches CUI is assessed against all 110 practices. Fewer in-scope assets means a cheaper, faster, lower-risk certification. Compare boundaries before you compare features.</p></div></div>
+<div class="bet reveal d2"><span class="n">03</span><div><h4>Everything is "secure." That is not the question.</h4><p>Every serious option in this market encrypts well and markets compliance hard. The question that separates them is the size of the assessment each one leaves you with, and who has to build, operate, and defend the environment that produces it.</p></div></div>
+<div class="bet reveal"><span class="n">04</span><div><h4>Not every "enclave" is the same kind of thing</h4><p>A government cloud you migrate into and operate, an encrypted overlay on your existing email, and a purpose-built enclave behave completely differently at assessment. Make sure you are comparing within the right category before comparing within it.</p></div></div>
+<div class="bet reveal d1"><span class="n">05</span><div><h4>Per-seat price is the smallest number on the invoice</h4><p>The sticker is not where the money is. The migration project, the virtual desktop stack, the ongoing services contract, and the size of the assessment are. Compare the total burden of owning each option for three years, not the monthly line item.</p></div></div>
+</div>
 </div></section>
 
 <section class="light"><div class="wrap">
