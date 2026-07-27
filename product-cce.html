@@ -364,7 +364,7 @@
 </style>
 <style>
   /* scope lead widget (CCE hero) */
-  .scopeviz{max-width:760px;margin:52px auto 0;position:relative;z-index:1;}
+  .scopeviz{max-width:960px;margin:52px auto 0;position:relative;z-index:1;}
   .scopeviz svg{width:100%;height:auto;display:block;}
   .scopeviz .cap{margin-top:18px;text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--on-dark-2);}
   .scopeviz .cap b{color:var(--accent-bright);font-weight:600;}
@@ -428,46 +428,67 @@
 
 <!-- scope lead widget -->
 <div class="scopeviz reveal">
-<svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CUI enclave in scope; devices out of scope">
-  <!-- boundary -->
-  <rect x="200" y="26" width="360" height="180" rx="18" fill="none" stroke="#3CC6D8" stroke-width="2"/>
-  <rect x="222" y="14" width="92" height="24" rx="12" fill="#0E2233" stroke="#3CC6D8" stroke-width="1.5"/>
-  <text x="268" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#7FE0EE">IN SCOPE</text>
-  <!-- enclave block -->
-  <rect x="248" y="58" width="264" height="118" rx="14" fill="#159AAC"/>
-  <g transform="translate(365,88)">
-    <rect x="0" y="10" width="30" height="24" rx="4" fill="#0A1628"/>
-    <path d="M6 10 v-4 a9 9 0 0 1 18 0 v4" fill="none" stroke="#0A1628" stroke-width="4"/>
-  </g>
-  <text x="380" y="158" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" letter-spacing="2" fill="#062A32">CUI ENCLAVE</text>
-  <!-- dashed connectors -->
-  <line x1="290" y1="206" x2="180" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
-  <line x1="380" y1="206" x2="380" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
-  <line x1="470" y1="206" x2="580" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
-  <!-- devices -->
-  <g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.2">
-    <g transform="translate(112,292)">
-      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
-      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
-      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
-      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
-    </g>
-    <g transform="translate(312,292)">
-      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
-      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
-      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
-      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
-    </g>
-    <g transform="translate(512,292)">
-      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
-      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
-      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
-      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
-    </g>
-  </g>
+<svg viewBox="0 0 1100 590" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Secure Data Room inside the Compliant Cloud Environment; devices out of scope">
+<defs>
+<marker id="arrL" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="#3CC6D8"/></marker>
+<marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3CC6D8"/></marker>
+</defs>
+
+<!-- CCE boundary -->
+<rect x="40" y="95" width="560" height="380" rx="16" fill="rgba(21,154,172,.05)" stroke="#3CC6D8" stroke-width="1.8"/>
+<rect x="382" y="77" width="168" height="34" rx="17" fill="#0F7E8C"/>
+<text x="466" y="99" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="600" letter-spacing="2.5" fill="#FFFFFF">CUI BOUNDARY</text>
+<text x="72" y="140" font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="3.5" fill="#3CC6D8">COMPLIANT CLOUD ENVIRONMENT</text>
+<text x="72" y="163" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="3" fill="#6B7F99">THE SECURE ENCLAVE</text>
+
+<!-- nested Secure Data Room -->
+<rect x="72" y="192" width="400" height="240" rx="14" fill="#159AAC"/>
+<path d="M418 212 h20 l6 7 h20 a4 4 0 0 1 4 4 v22 a4 4 0 0 1 -4 4 h-46 a4 4 0 0 1 -4 -4 v-29 a4 4 0 0 1 4 -4 z" fill="none" stroke="#EAFBF8" stroke-width="2"/>
+<text x="96" y="238" font-family="Archivo, sans-serif" font-size="21" font-weight="800" fill="#FFFFFF" letter-spacing=".5">SECURE DATA ROOM</text>
+<text x="96" y="260" font-family="IBM Plex Sans, sans-serif" font-size="13.5" fill="#D8F4EF">The CUI document repository</text>
+<g font-family="IBM Plex Sans, sans-serif" font-size="14" fill="#F0FBF9">
+<circle cx="102" cy="291" r="2.5" fill="#EAFBF8"/><text x="116" y="296">Access controls &amp; permissions</text>
+<circle cx="102" cy="319" r="2.5" fill="#EAFBF8"/><text x="116" y="324">Collaboration on Office &amp; other files</text>
+<circle cx="102" cy="347" r="2.5" fill="#EAFBF8"/><text x="116" y="352">Auditing &amp; reporting built in</text>
+</g>
+<text x="96" y="400" font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="2.5" fill="#BFF0E8">COMPLIANT OUT OF THE BOX</text>
+
+<!-- device cards -->
+<g>
+<rect x="770" y="110" width="292" height="78" rx="10" fill="#12212F" stroke="#24384D"/>
+<rect x="794" y="132" width="34" height="24" rx="3" fill="none" stroke="#7FE0EE" stroke-width="2.2"/><rect x="805" y="158" width="12" height="3" rx="1.5" fill="#7FE0EE"/>
+<text x="850" y="143" font-family="Archivo, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Office workstations</text>
+<text x="850" y="166" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#3CC6D8">OUT OF SCOPE</text>
+
+<rect x="770" y="210" width="292" height="78" rx="10" fill="#12212F" stroke="#24384D"/>
+<rect x="794" y="232" width="34" height="20" rx="3" fill="none" stroke="#7FE0EE" stroke-width="2.2"/><rect x="788" y="254" width="46" height="4" rx="2" fill="#7FE0EE"/>
+<text x="850" y="243" font-family="Archivo, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Remote laptops</text>
+<text x="850" y="266" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#3CC6D8">OUT OF SCOPE</text>
+
+<rect x="770" y="310" width="292" height="78" rx="10" fill="#12212F" stroke="#24384D"/>
+<rect x="800" y="326" width="22" height="40" rx="4" fill="none" stroke="#7FE0EE" stroke-width="2.2"/><circle cx="811" cy="358" r="2" fill="#7FE0EE"/>
+<text x="850" y="343" font-family="Archivo, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Mobile devices</text>
+<text x="850" y="366" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#3CC6D8">OUT OF SCOPE</text>
+
+<rect x="770" y="418" width="292" height="86" rx="10" fill="none" stroke="#3CC6D8" stroke-width="1.4" stroke-dasharray="5 5"/>
+<path d="M794 470 v-16 l10 8 v-8 l10 8 v-8 l12 9 v7 z" fill="none" stroke="#7FE0EE" stroke-width="2"/>
+<text x="850" y="448" font-family="Archivo, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Contractor supply chain</text>
+<text x="850" y="470" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="#93A9C4">Primes, subs &amp; partners</text>
+</g>
+
+<!-- dashed connectors, arrows into the enclave -->
+<line x1="614" y1="149" x2="766" y2="149" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" marker-start="url(#arrL)" opacity=".85"/>
+<line x1="614" y1="249" x2="766" y2="249" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" marker-start="url(#arrL)" opacity=".85"/>
+<line x1="614" y1="349" x2="766" y2="349" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" marker-start="url(#arrL)" opacity=".85"/>
+<!-- DR Connect lane -->
+<line x1="614" y1="461" x2="659" y2="461" stroke="#3CC6D8" stroke-width="1.8" marker-start="url(#arrL)"/>
+<line x1="801" y1="461" x2="766" y2="461" stroke="#3CC6D8" stroke-width="1.8" marker-end="url(#arrR)"/>
+<rect x="659" y="443" width="142" height="36" rx="18" fill="#7FE0EE"/>
+<text x="730" y="466" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="700" letter-spacing="2" fill="#062A32">DR CONNECT</text>
 </svg>
-<div class="cap">Your people reach in through a secure browser. <b>CUI never reaches out.</b></div>
+<div class="cap">CUI never leaves the enclave, <b>so every device stays outside the CUI boundary.</b></div>
 </div>
+
 
 </section>
 
