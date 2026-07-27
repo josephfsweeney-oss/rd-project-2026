@@ -551,6 +551,22 @@ ary.</b></div>
 </div>
 </div></section>
 
+<!-- ===== CONTROL RECEIPTS ===== -->
+<section class="light"><div class="wrap">
+<span class="mark on-light">The receipts</span>
+<h2 class="sectitle">Where CCE answers the controls by name</h2>
+<p class="lead">Some NIST SP 800-171 controls are notoriously hard to satisfy when CUI can leave the boundary. Inside the enclave, they fall out of the architecture. A sample, by control number:</p>
+<div class="cards3">
+<div class="card reveal"><span class="klabel">3.13.4</span><h4>No transfer via shared resources</h4><p>Storage and use of CUI files are restricted to the enclave, so unauthorized or unintended transfer is banned at the platform, even for a properly permissioned user trying to move CUI out.</p></div>
+<div class="card reveal d1"><span class="klabel">3.13.1</span><h4>Communications, controlled at the boundary</h4><p>Not just stored CUI but the applications using and communicating about it are monitored, controlled, tracked, and audited inside one boundary.</p></div>
+<div class="card reveal d2"><span class="klabel">3.13.3</span><h4>User and admin functionality, separated</h4><p>The virtualization approach 800-171's own discussion points to: user functionality and system management cleanly separated, transparently to the user.</p></div>
+<div class="card reveal"><span class="klabel">3.4.2 &middot; 3.4.7 &middot; 3.4.9</span><h4>Software, actually governed</h4><p>User-installed and uncontrolled applications around CUI are controlled and monitored, because every application touching CUI is hosted, assigned, and tracked inside the enclave.</p></div>
+<div class="card reveal d1"><span class="klabel">3.8.9</span><h4>Backup CUI, protected without asterisks</h4><p>Backup confidentiality holds because CUI never leaves the compliant boundary in the first place, in use or at rest.</p></div>
+<div class="card reveal d2"><span class="klabel">3.3.2 &middot; 3.3.7</span><h4>Every action traced, time-stamped</h4><p>System users uniquely traced to their actions, with time-stamped audit records retained and reportable, the audit trail is the floor of the product, not a feature.</p></div>
+</div>
+</div></section>
+
+
 <div class="stats"><div class="wrap">
 <div class="stat reveal"><div class="n">0</div><div class="d">Virtual desktops to license, harden, or administer, and zero CUI files stored on endpoints. One secured web session does the whole job.</div><div class="src">No VDI &middot; engineered default</div></div>
 <div class="stat reveal d1"><div class="n">1</div><div class="d">In-scope asset at assessment: the enclave's admin console, with no Contractor Risk Managed Assets.</div><div class="src">The boundary, independently confirmed</div></div>
@@ -567,6 +583,18 @@ ary.</b></div>
 <div class="pillar reveal d1"><h3>Reach CUI anywhere. Store it nowhere.</h3><p>Any device with a browser, desk, remote, BYOD, or a kiosk at the machine, reaches CUI with nothing stored locally. Viewing a drawing at the machine shouldn't blow up your scope, and there's no desktop to provision for the kiosk either.</p><div class="proof">A flagship customer runs CCE on shop-floor kiosks today</div></div>
 </div>
 </section>
+
+<!-- ===== BUILT TO FIT ===== -->
+<section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
+<span class="mark on-light">Built to fit</span>
+<h2 class="sectitle" style="font-size:32px;">Shaped to how you actually run</h2>
+<div class="cards3">
+<div class="card reveal"><span class="klabel">Licensing</span><h4>Per-diem user billing</h4><p>Usage billing applies only for the days a licensed user is granted access. Vendors, customers, and reviewers who touch CUI intermittently cost you when they work, not when they don't.</p></div>
+<div class="card reveal d1"><span class="klabel">Applications</span><h4>Your tools, hosted inside</h4><p>Choose which applications come into the enclave, licensed by us or by you, running beside the data so editing is latency-free and CUI never travels to the tool. Users see only the applications and content assigned to them, and nothing more.</p></div>
+<div class="card reveal d2"><span class="klabel">Infrastructure</span><h4>Shared or dedicated</h4><p>Run on shared infrastructure or take a dedicated instance no other organization touches, with IP-restricted access and specifications adjustable in minutes, not procurement cycles.</p></div>
+</div>
+</div></section>
+
 
 <section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap center" style="text-align:center;">
 <span class="mark on-light" style="justify-content:center;">Who carries the risk</span>
