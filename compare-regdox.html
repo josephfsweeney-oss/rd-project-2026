@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compare RegDOX | RegDOX Solutions</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE vs the typical MSP-built enclave: no VDI, no tenant migration, no ongoing MSP services. Line-by-line comparison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,7 +218,8 @@
   .fear .wm{color:#fff;opacity:.035;}
   section{padding:96px 0;}
   @media(max-width:720px){section{padding:60px 0;}}
-  .sectitle{font-size:40px;font-weight:800;margin-top:14px;letter-spacing:-0.025em;}
+  .sectitle{font-size:46px;font-weight:900;margin-top:14px;letter-spacing:-0.03em;}
+  @media(max-width:720px){.sectitle{font-size:34px;}}
   .lead{color:var(--steel);font-size:17px;margin-top:16px;max-width:54em;line-height:1.65;}
   .center{text-align:center;}
   .center .lead{margin-left:auto;margin-right:auto;}
@@ -298,7 +300,7 @@
   .convert{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:120px 0;}
   .convert .glow{position:absolute;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(21,154,172,.16),transparent 62%);filter:blur(90px);top:-260px;left:50%;transform:translateX(-50%);pointer-events:none;}
   .convert .wrap{position:relative;z-index:1;text-align:center;max-width:840px;}
-  .convert h2{font-size:46px;font-weight:900;letter-spacing:-0.03em;margin-top:18px;}
+  .convert h2{font-size:52px;font-weight:900;letter-spacing:-0.03em;margin-top:18px;}
   .convert p{color:var(--on-dark-1);font-size:17px;margin:22px auto 0;max-width:36em;line-height:1.65;}
   .convert .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px;}
   .convert .phone{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--on-dark-2);margin-top:28px;display:block;text-decoration:none;}
@@ -324,7 +326,7 @@
   .page-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(122,150,190,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(122,150,190,.05) 1px,transparent 1px);background-size:38px 38px;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 10%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 80% 80% at 50% 10%,#000 25%,transparent 80%);}
   .page-hero .glow{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(90px);pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 65%);top:-200px;right:-120px;}
   .page-hero .wrap{position:relative;z-index:1;max-width:860px;}
-  .page-hero h1{font-size:48px;font-weight:900;letter-spacing:-0.03em;margin-top:22px;line-height:1.0;}
+  .page-hero h1{font-size:54px;font-weight:900;letter-spacing:-0.03em;margin-top:22px;line-height:1.0;}
   .page-hero h1 .accent{color:var(--accent-bright);}
   .page-hero .sub{color:var(--on-dark-1);font-size:17.5px;line-height:1.65;margin:20px auto 0;max-width:40em;}
   .page-hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
@@ -451,7 +453,7 @@
 <h2 class="sectitle">RegDOX CCE vs. the typical MSP-built enclave</h2>
 <div class="cmp-head"><div class="cmp-sp"></div><div class="cmp-pill msp">Typical MSP-Built Enclave</div><div class="cmp-pill rgx">RegDOX CCE</div></div>
 <div class="cmp-row reveal"><div class="cmp-cat">User access</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>A virtual desktop licensed, hardened, and administered for every user</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>No VDI. One secured web session per user, nothing on the device</div></div><div class="cmp-row reveal"><div class="cmp-cat">Office editing</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Office runs inside the VDI stack you pay to maintain</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>Fully Office-compatible editing in the browser, included</div></div><div class="cmp-row reveal"><div class="cmp-cat">Getting in</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Full tenant migration into GCC High before day one</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>Provision the environment alongside the IT you already run</div></div><div class="cmp-row reveal"><div class="cmp-cat">Supply chain</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Partners must be issued provisioned accounts</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>DR Connect brings partners into specific content, no accounts</div></div><div class="cmp-row reveal"><div class="cmp-cat">Operations</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Continuous MSP professional services to keep it running</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>Yours to run through simple web administration</div></div><div class="cmp-row reveal"><div class="cmp-cat">Repository + workspace</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Assembled from separate licensed pieces</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>Secure Data Room and virtual workspace, one platform</div></div><div class="cmp-row reveal"><div class="cmp-cat">Endpoints</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Out of scope, when the VDI stack is built and maintained right</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>Out of scope by engineered default</div></div><div class="cmp-row reveal"><div class="cmp-cat">Personnel</div><div class="cmp-cell msp"><span class="cmp-x">&#10005;</span>Depends on the MSP and the stack behind it</div><div class="cmp-cell rgx"><span class="cmp-c">&#10003;</span>U.S. data centers and U.S. personnel, end to end</div></div>
-<p style="margin-top:26px;color:var(--steel);font-size:13.5px;">Both models can produce a certifiable enclave. The comparison above is about what you have to license, build, and keep paying for to get there. Deciding between an enclave and other approaches entirely? <a href="cmmc-solutions.html" style="color:var(--navy);">Start with the four paths to CMMC Level 2 &rarr;</a></p>
+<p style="margin-top:26px;color:var(--steel);font-size:13.5px;">The comparison above is about what you have to license, build, and keep paying for to get there. Deciding between an enclave and other approaches entirely? <a href="cmmc-solutions.html" style="color:var(--navy);">Start with the four paths to CMMC Level 2 &rarr;</a></p>
 </div></section>
 
 
