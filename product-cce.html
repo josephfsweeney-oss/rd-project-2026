@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compliant Cloud Enclave | RegDOX Solutions</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE: a complete virtual workspace on AWS GovCloud with the Secure Data Room built in. No VDI, endpoints out of scope, one secured web session.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -351,33 +352,7 @@
   .post-card .pdate{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);}
 </style>
 
-<style>
-  /* demo contrast boost (CCE page) */
-  .demo{border-color:rgba(60,198,216,.45);background:linear-gradient(170deg,#123458,#0A1E3E);box-shadow:0 0 0 1px rgba(60,198,216,.15),0 34px 90px rgba(0,0,0,.6),0 0 90px rgba(21,154,172,.22);}
-  .demo-head{background:rgba(10,28,54,.65);}
-  .demo-head .t{color:#B8CCE6;font-size:13px;}
-  .toggle{border-color:#35597F;background:#0A1C36;}
-  .toggle button{color:#AFC4DE;font-size:14px;padding:11px 22px;}
-  .toggle button.active{box-shadow:0 4px 16px rgba(21,154,172,.5);}
-  .demo-count .n{font-size:64px;text-shadow:0 0 36px rgba(226,112,95,.35);}
-  .demo.cce .demo-count .n{text-shadow:0 0 36px rgba(60,198,216,.4);}
-  .demo-count .l{color:#8FA6C6;font-size:15px;}
-  .dchip{border-color:#3B5E8A;background:rgba(18,48,86,.8);}
-  .dchip .nm{color:#E4ECF7;font-size:13.5px;}
-  .dchip .st{color:#F09A86;font-weight:600;font-size:11px;}
-  .demo.cce .dchip{border-color:#2E6E7E;background:rgba(14,42,78,.45);}
-  .demo.cce .dchip .st{color:#7BD8A8;}
-  .enclave{border-width:1.5px;box-shadow:0 0 32px rgba(21,154,172,.28);}
-  .enclave .nm{font-size:16px;}
-  .boundary{border-width:2px;border-color:rgba(226,112,95,.75);background:rgba(194,74,60,.10);}
-  .demo.cce .boundary{border-color:rgba(60,198,216,.8);background:rgba(21,154,172,.10);}
-  .boundary .bc{border-width:3.5px;width:18px;height:18px;}
-  .boundary .blabel{font-size:12px;color:#F0A794;border-color:rgba(226,112,95,.7);background:#132B4E;}
-  .demo.cce .boundary .blabel{color:#7FE0EE;border-color:rgba(60,198,216,.7);}
-  .stage-note{color:#8FA6C6;font-size:14px;}
-  .stage-note b{color:#E8EEF6;}
-  .sdr-mini{box-shadow:0 6px 22px rgba(21,154,172,.4);}
-</style>
+
 <style>
   /* preview-only: gray out pages not yet built */
   .topbar a.nav-todo{opacity:.42;}
@@ -410,10 +385,10 @@
             <a href="itar-solutions.html"><span class="d-nm">ITAR Solutions</span><span class="d-ds">Export-controlled technical data, compliantly managed</span></a>
             <a href="dfars-solutions.html"><span class="d-nm">DFARS Solutions</span><span class="d-ds">Meet the 7012 bar with validated evidence</span></a>
             <a href="ear-solutions.html"><span class="d-nm">EAR Solutions</span><span class="d-ds">Dual-use export control for commercial tech</span></a>
-            <a href="compare-regdox.html"><span class="d-nm">Compare RegDOX</span><span class="d-ds">Side by side against the MSP-built stack</span></a>
             <a href="faqs.html"><span class="d-nm">Compliance FAQs</span><span class="d-ds">Straight answers on scope, assets, and assessment</span></a>
           </div>
         </div>
+      <a href="compare-regdox.html" class="navtop">Compare RegDOX</a>
       </div>
       <div class="navitem">
         <a href="resources.html" class="navtop" aria-haspopup="true">Resources <span class="chev">&#9662;</span></a>
@@ -434,60 +409,12 @@
   </div>
 </header>
 
-<section class="page-hero" style="padding-bottom:0;"><div class="glow"></div><div class="wrap">
+<section class="page-hero"><div class="glow"></div><div class="wrap">
 <span class="mark" style="justify-content:center;">Compliant Cloud Enclave &middot; CMMC Level 2</span>
 <h1>The scope your assessor can walk <span class="accent">in an afternoon.</span></h1>
 <p class="sub">RegDOX CCE is a complete virtual workspace on AWS GovCloud with the Secure Data Room built in: one secured web session where your team stores, edits, and collaborates on CUI. No virtual desktops. No MSP meter. And a boundary so small the assessment gets simple.</p>
 <div class="ctas"><a class="btn btn-primary" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a></div>
 </div>
-<!-- interactive scope demo -->
-  <div class="demo-outer">
-    <div class="wrap" style="max-width:1040px;">
-      <div class="demo reveal in d3" id="demo">
-        <div class="demo-head">
-          <span class="t">Build your enclave &middot; two ways</span>
-          <div class="toggle" role="tablist" aria-label="Boundary comparison">
-            <button id="btn-without" class="active" aria-pressed="true">Our Competitors</button>
-            <button id="btn-with" aria-pressed="false">RegDOX CCE</button>
-          </div>
-        </div>
-        <div class="demo-count">
-          <div class="n" id="assetcount">6</div>
-          <div class="l" id="assetlabel">Components to license, harden, and administer &middot; with the MSP meter running on all of it</div>
-        </div>
-        <div class="stage">
-          <div class="boundary" aria-hidden="true">
-            <span class="bc bc1"></span><span class="bc bc2"></span><span class="bc bc3"></span><span class="bc bc4"></span>
-            <span class="blabel" id="blabel">Your Enclave Stack &middot; 6 Components</span>
-            <span class="scan"></span>
-          </div>
-          <div class="stage-grid">
-            <div class="enclave">
-              <div class="nm" id="enclave-nm">MSP-Built Enclave</div>
-              <div class="st" id="enclave-st">GCC High + VDI stack &middot; assembled for you, billed to you</div>
-              <div class="sdr-mini" aria-hidden="true"><span class="sdr-nm">Secure Data Room + Virtual Workspace</span><span class="sdr-ds">Fully Office-compatible editing &middot; one secured web session</span></div>
-            </div>
-            <div class="kvm">Secure browser &middot; keyboard, video, mouse only &middot; nothing stored</div>
-            <div class="chips">
-              <div class="dchip"><div class="nm">GCC High Licensing</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Virtual Desktop per User</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">VDI Endpoint Hardening</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Full Tenant Migration</div><div class="st">Required</div></div>
-            </div>
-            <div class="chips">
-              <div class="dchip"><div class="nm">Ongoing MSP Administration</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Provisioned Partner Accounts</div><div class="st" id="st-supply2">Required</div></div>
-              
-              
-            </div>
-          </div>
-        </div>
-        <div class="stage-note" id="stagenote">Every piece is licensed, secured, and administered. <b>Toggle to see the RegDOX build.</b></div>
-      </div>
-      <p style="text-align:center;margin-top:18px;"><a href="compare-regdox.html" style="font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);text-decoration:none;">See the full comparison &rarr;</a></p>
-    </div>
-  </div>
-
 </section>
 
 <section class="light"><div class="wrap">

@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compare RegDOX | RegDOX Solutions</title>
+<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE vs the typical MSP-built enclave: no VDI, no tenant migration, no ongoing MSP services. Line-by-line comparison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -377,6 +378,33 @@
   .bet h4{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0;color:var(--ink);}
   .bet p{font-size:14.5px;color:#42566F;line-height:1.6;margin:6px 0 0;max-width:52em;}
 </style>
+<style>
+  /* demo contrast boost (Compare page) */
+  .demo{border-color:rgba(60,198,216,.45);background:linear-gradient(170deg,#123458,#0A1E3E);box-shadow:0 0 0 1px rgba(60,198,216,.15),0 34px 90px rgba(0,0,0,.6),0 0 90px rgba(21,154,172,.22);}
+  .demo-head{background:rgba(10,28,54,.65);}
+  .demo-head .t{color:#B8CCE6;font-size:13px;}
+  .toggle{border-color:#35597F;background:#0A1C36;}
+  .toggle button{color:#AFC4DE;font-size:14px;padding:11px 22px;}
+  .toggle button.active{box-shadow:0 4px 16px rgba(21,154,172,.5);}
+  .demo-count .n{font-size:64px;text-shadow:0 0 36px rgba(226,112,95,.35);}
+  .demo.cce .demo-count .n{text-shadow:0 0 36px rgba(60,198,216,.4);}
+  .demo-count .l{color:#8FA6C6;font-size:15px;}
+  .dchip{border-color:#3B5E8A;background:rgba(18,48,86,.8);}
+  .dchip .nm{color:#E4ECF7;font-size:13.5px;}
+  .dchip .st{color:#F09A86;font-weight:600;font-size:11px;}
+  .demo.cce .dchip{border-color:#2E6E7E;background:rgba(14,42,78,.45);}
+  .demo.cce .dchip .st{color:#7BD8A8;}
+  .enclave{border-width:1.5px;box-shadow:0 0 32px rgba(21,154,172,.28);}
+  .enclave .nm{font-size:16px;}
+  .boundary{border-width:2px;border-color:rgba(226,112,95,.75);background:rgba(194,74,60,.10);}
+  .demo.cce .boundary{border-color:rgba(60,198,216,.8);background:rgba(21,154,172,.10);}
+  .boundary .bc{border-width:3.5px;width:18px;height:18px;}
+  .boundary .blabel{font-size:12px;color:#F0A794;border-color:rgba(226,112,95,.7);background:#132B4E;}
+  .demo.cce .boundary .blabel{color:#7FE0EE;border-color:rgba(60,198,216,.7);}
+  .stage-note{color:#8FA6C6;font-size:14px;}
+  .stage-note b{color:#E8EEF6;}
+  .sdr-mini{box-shadow:0 6px 22px rgba(21,154,172,.4);}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -403,10 +431,10 @@
             <a href="itar-solutions.html"><span class="d-nm">ITAR Solutions</span><span class="d-ds">Export-controlled technical data, compliantly managed</span></a>
             <a href="dfars-solutions.html"><span class="d-nm">DFARS Solutions</span><span class="d-ds">Meet the 7012 bar with validated evidence</span></a>
             <a href="ear-solutions.html"><span class="d-nm">EAR Solutions</span><span class="d-ds">Dual-use export control for commercial tech</span></a>
-            <a href="compare-regdox.html"><span class="d-nm">Compare RegDOX</span><span class="d-ds">Side by side against the MSP-built stack</span></a>
             <a href="faqs.html"><span class="d-nm">Compliance FAQs</span><span class="d-ds">Straight answers on scope, assets, and assessment</span></a>
           </div>
         </div>
+      <a href="compare-regdox.html" class="navtop">Compare RegDOX</a>
       </div>
       <div class="navitem">
         <a href="resources.html" class="navtop" aria-haspopup="true">Resources <span class="chev">&#9662;</span></a>
@@ -427,11 +455,60 @@
   </div>
 </header>
 
-<section class="page-hero"><div class="glow"></div><div class="wrap">
+<section class="page-hero" style="padding-bottom:0;"><div class="glow"></div><div class="wrap">
 <span class="mark" style="justify-content:center;">Compare RegDOX</span>
 <h1>Same secure enclave. <span class="accent">Half the moving parts.</span></h1>
 <p class="sub">Most CMMC enclaves are assembled for you: GCC High licensing, a virtual desktop per user, and an MSP contract to keep it all running. RegDOX CCE is built as one platform. Here is the difference, line by line.</p>
-</div></section>
+</div>
+<!-- interactive scope demo -->
+  <div class="demo-outer">
+    <div class="wrap" style="max-width:1040px;">
+      <div class="demo reveal in d3" id="demo">
+        <div class="demo-head">
+          <span class="t">Build your enclave &middot; two ways</span>
+          <div class="toggle" role="tablist" aria-label="Boundary comparison">
+            <button id="btn-without" class="active" aria-pressed="true">Our Competitors</button>
+            <button id="btn-with" aria-pressed="false">RegDOX CCE</button>
+          </div>
+        </div>
+        <div class="demo-count">
+          <div class="n" id="assetcount">6</div>
+          <div class="l" id="assetlabel">Components to license, harden, and administer &middot; with the MSP meter running on all of it</div>
+        </div>
+        <div class="stage">
+          <div class="boundary" aria-hidden="true">
+            <span class="bc bc1"></span><span class="bc bc2"></span><span class="bc bc3"></span><span class="bc bc4"></span>
+            <span class="blabel" id="blabel">Your Enclave Stack &middot; 6 Components</span>
+            <span class="scan"></span>
+          </div>
+          <div class="stage-grid">
+            <div class="enclave">
+              <div class="nm" id="enclave-nm">MSP-Built Enclave</div>
+              <div class="st" id="enclave-st">GCC High + VDI stack &middot; assembled for you, billed to you</div>
+              <div class="sdr-mini" aria-hidden="true"><span class="sdr-nm">Secure Data Room + Virtual Workspace</span><span class="sdr-ds">Fully Office-compatible editing &middot; one secured web session</span></div>
+            </div>
+            <div class="kvm">Secure browser &middot; keyboard, video, mouse only &middot; nothing stored</div>
+            <div class="chips">
+              <div class="dchip"><div class="nm">GCC High Licensing</div><div class="st">Required</div></div>
+              <div class="dchip"><div class="nm">Virtual Desktop per User</div><div class="st">Required</div></div>
+              <div class="dchip"><div class="nm">VDI Endpoint Hardening</div><div class="st">Required</div></div>
+              <div class="dchip"><div class="nm">Full Tenant Migration</div><div class="st">Required</div></div>
+            </div>
+            <div class="chips">
+              <div class="dchip"><div class="nm">Ongoing MSP Administration</div><div class="st">Required</div></div>
+              <div class="dchip"><div class="nm">Provisioned Partner Accounts</div><div class="st" id="st-supply2">Required</div></div>
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="stage-note" id="stagenote">Every piece is licensed, secured, and administered. <b>Toggle to see the RegDOX build.</b></div>
+      </div>
+      <p style="text-align:center;margin-top:18px;"><a href="compare-regdox.html" style="font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);text-decoration:none;">See the full comparison &rarr;</a></p>
+    </div>
+  </div>
+
+</section>
 
 
 <!-- ===== HOW TO COMPARE (power positioning, customer-facing) ===== -->
@@ -666,24 +743,24 @@
     bC.setAttribute('aria-pressed',String(cce));
     var blabel=document.getElementById('blabel');
     var chipStates=demo.querySelectorAll('.dchip .st');
-    var stSupply=document.getElementById('st-supply');
+    var stSupply=document.getElementById('st-supply2');
     if(cce){
-      animateCount(8,1);
-      label.textContent='Asset class inside your CUI boundary: the enclave';
-      note.innerHTML='CUI never leaves the enclave, so every device stays outside the CUI boundary. <b>32 CFR &sect;170.19.</b>';
-      encNm.textContent='Compliant Cloud Environment';
-      encSt.textContent='The Secure Enclave \u00B7 CUI lives here \u00B7 In scope';
-      if(blabel)blabel.textContent='CUI Boundary \u00B7 1 Asset Class';
-      chipStates.forEach(function(s){s.textContent='Out of Scope';});
-      if(stSupply)stSupply.textContent='Out of Scope \u00B7 via DR Connect';
+      animateCount(6,1);
+      label.textContent='Component: one secured web environment on AWS GovCloud';
+      note.innerHTML='Endpoints out of scope, like any enclave. <b>The difference is everything you did not have to build, license, or pay someone to run.</b>';
+      encNm.textContent='RegDOX CCE';
+      encSt.textContent='AWS GovCloud \u00B7 one secured web session \u00B7 yours to run';
+      if(blabel)blabel.textContent='Your Enclave Stack \u00B7 1 Component';
+      chipStates.forEach(function(s){s.textContent='Not Needed';});
+      if(stSupply)stSupply.textContent='Not Needed \u00B7 DR Connect instead';
     }else{
-      animateCount(1,8);
-      label.textContent='Asset classes inside your CUI boundary \u00B7 each against 110 controls';
-      note.innerHTML='Every asset class that touches CUI is assessed. <b>Toggle to see the enclave model.</b>';
-      encNm.textContent='CUI \u00B7 Scattered Across Systems';
-      encSt.textContent='Mail \u00B7 File Shares \u00B7 Devices';
-      if(blabel)blabel.textContent='CUI Boundary \u00B7 8 Asset Classes';
-      chipStates.forEach(function(s){s.textContent='In Scope';});
+      animateCount(1,6);
+      label.textContent='Components to license, harden, and administer \u00B7 with the MSP meter running on all of it';
+      note.innerHTML='Every piece is licensed, secured, and administered. <b>Toggle to see the RegDOX build.</b>';
+      encNm.textContent='MSP-Built Enclave';
+      encSt.textContent='GCC High + VDI stack \u00B7 assembled for you, billed to you';
+      if(blabel)blabel.textContent='Your Enclave Stack \u00B7 6 Components';
+      chipStates.forEach(function(s){s.textContent='Required';});
     }
     fitBoundary(true);
   }
@@ -696,6 +773,25 @@
       setTimeout(function(){setState(false);},5200);
     }
   }
+
+  // rotating headline: ITAR / CMMC / Compliance, 3s per word
+  (function(){
+    var words=document.querySelectorAll('.rot-word');
+    if(!words.length)return;
+    if(reduced){
+      words.forEach(function(w,i){w.classList.toggle('active',i===words.length-1);});
+      return;
+    }
+    var idx=0;
+    setInterval(function(){
+      var cur=words[idx];
+      idx=(idx+1)%words.length;
+      var nxt=words[idx];
+      cur.classList.remove('active');cur.classList.add('leaving');
+      setTimeout(function(){cur.classList.remove('leaving');},500);
+      nxt.classList.add('active');
+    },3000);
+  })();
 
   // card cursor glow
   document.querySelectorAll('.card').forEach(function(card){
