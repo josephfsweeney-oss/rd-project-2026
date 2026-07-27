@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compliant Cloud Enclave | RegDOX Solutions</title>
-<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE: a complete virtual workspace on AWS GovCloud with the Secure Data Room built in. No VDI, endpoints out of scope, one secured web session.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -363,6 +362,13 @@
   .navtop.nav-compare{color:var(--accent-bright);border:1px solid color-mix(in srgb,var(--accent-bright) 55%,transparent);border-radius:999px;padding:7px 15px;transition:background .15s ease,color .15s ease;}
   .navtop.nav-compare:hover{background:color-mix(in srgb,var(--accent-bright) 14%,transparent);color:#fff;}
 </style>
+<style>
+  /* scope lead widget (CCE hero) */
+  .scopeviz{max-width:760px;margin:52px auto 0;position:relative;z-index:1;}
+  .scopeviz svg{width:100%;height:auto;display:block;}
+  .scopeviz .cap{margin-top:18px;text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--on-dark-2);}
+  .scopeviz .cap b{color:var(--accent-bright);font-weight:600;}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -419,6 +425,50 @@
 <p class="sub">RegDOX CCE is a complete virtual workspace on AWS GovCloud with the Secure Data Room built in: one secured web session where your team stores, edits, and collaborates on CUI. No virtual desktops. No MSP meter. And a boundary so small the assessment gets simple.</p>
 <div class="ctas"><a class="btn btn-primary" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a></div>
 </div>
+
+<!-- scope lead widget -->
+<div class="scopeviz reveal">
+<svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CUI enclave in scope; devices out of scope">
+  <!-- boundary -->
+  <rect x="200" y="26" width="360" height="180" rx="18" fill="none" stroke="#3CC6D8" stroke-width="2"/>
+  <rect x="222" y="14" width="92" height="24" rx="12" fill="#0E2233" stroke="#3CC6D8" stroke-width="1.5"/>
+  <text x="268" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.5" fill="#7FE0EE">IN SCOPE</text>
+  <!-- enclave block -->
+  <rect x="248" y="58" width="264" height="118" rx="14" fill="#159AAC"/>
+  <g transform="translate(365,88)">
+    <rect x="0" y="10" width="30" height="24" rx="4" fill="#0A1628"/>
+    <path d="M6 10 v-4 a9 9 0 0 1 18 0 v4" fill="none" stroke="#0A1628" stroke-width="4"/>
+  </g>
+  <text x="380" y="158" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="600" letter-spacing="2" fill="#062A32">CUI ENCLAVE</text>
+  <!-- dashed connectors -->
+  <line x1="290" y1="206" x2="180" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
+  <line x1="380" y1="206" x2="380" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
+  <line x1="470" y1="206" x2="580" y2="292" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" opacity=".7"/>
+  <!-- devices -->
+  <g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.2">
+    <g transform="translate(112,292)">
+      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
+      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
+      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
+      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
+    </g>
+    <g transform="translate(312,292)">
+      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
+      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
+      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
+      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
+    </g>
+    <g transform="translate(512,292)">
+      <rect width="136" height="76" rx="10" fill="#F4F7FB" stroke="#C9D6E6"/>
+      <rect x="46" y="16" width="44" height="28" rx="3" fill="none" stroke="#42566F" stroke-width="2.5"/>
+      <rect x="38" y="46" width="60" height="4" rx="2" fill="#42566F"/>
+      <text x="68" y="66" text-anchor="middle" fill="#5E769A">OUT OF SCOPE</text>
+    </g>
+  </g>
+</svg>
+<div class="cap">Your people reach in through a secure browser. <b>CUI never reaches out.</b></div>
+</div>
+
 </section>
 
 <section class="light"><div class="wrap">
