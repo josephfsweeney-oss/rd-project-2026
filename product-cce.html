@@ -362,7 +362,8 @@
   /* scope lead widget (CCE hero) */
   .scopeviz{max-width:960px;margin:52px auto 0;position:relative;z-index:1;}
   .scopeviz svg{width:100%;height:auto;display:block;}
-  .scopeviz .cap{margin-top:26px;text-align:center;font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-0.01em;color:#fff;line-height:1.35;}
+  .scopeviz .cap{margin:30px auto 0;text-align:center;font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-0.01em;color:#fff;line-height:1.4;max-width:34em;padding:0 16px;overflow-wrap:normal;word-break:keep-all;hyphens:none;}
+  @media(max-width:720px){.scopeviz .cap{font-size:17px;}}
   .scopeviz .cap b{color:var(--accent-bright);font-weight:800;}
 </style>
 </head>
@@ -415,7 +416,7 @@
   </div>
 </header>
 
-<section class="page-hero"><div class="glow"></div><div class="wrap">
+<section class="page-hero" style="padding-bottom:80px;"><div class="glow"></div><div class="wrap">
 <span class="mark" style="justify-content:center;font-size:16px;letter-spacing:0.22em;font-weight:600;">Compliant Cloud Enclave &middot; CMMC Level 2</span>
 <h1>The scope your assessor can walk <span class="accent">in an afternoon.</span></h1>
 <p class="sub">CMMC Level 2 can be much easier and less expensive to achieve. CCE keeps every endpoint out of the CUI boundary, and it does not require a costly virtual desktop setup for each user. RegDOX has the platform and the advisory team to meet you where you are and carry you through the Level 2 journey.</p>
@@ -484,7 +485,7 @@
 </svg>
 <div class="cap">CUI never leaves the enclave, <b>so every device stays outside the CUI bound
 <!-- ===== NO VDI PER USER ===== -->
-<section class="light"><div class="wrap">
+<section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
 <span class="mark on-light">The delivery wedge</span>
 <h2 class="sectitle">No virtual desktop per user</h2>
 <div class="split" style="align-items:start;">
@@ -501,8 +502,21 @@
 </div>
 </div></section>
 
+<section class="light"><div class="wrap">
+<span class="mark on-light">One platform</span>
+<h2 class="sectitle">CCE and the Secure Data Room, blended by design</h2>
+<p class="lead">Not two products stitched together. One enclave with four jobs, each covered.</p>
+<div class="pillars">
+<div class="pillar reveal"><h3>The repository: Secure Data Room</h3><p>Every controlled file carries information rights management, watermarking, expiry, and an immutable audit trail. When the assessor asks how CUI is controlled, the answer is a report.</p><div class="proof">Maps to 85+ NIST SP 800-171 controls</div></div>
+<div class="pillar reveal d1"><h3>The workspace: the enclave around it</h3><p>Edit in fully Office-compatible OnlyOffice, open Visio, MS Project, email, media, and archives in built-in viewers, or host your own applications inside. Full desktops stay available for the few who need them. Downloads, clipboard, and printing are blocked by engineered default.</p><div class="proof">The lockdown is the default, not a project</div></div>
+<div class="pillar reveal"><h3>The doorway: one secured web session</h3><p>Any device with a browser reaches the work: desk, home, BYOD, shop floor. Nothing is stored locally, and there is no virtual desktop to license, harden, or administer per user.</p><div class="proof">No VDI &middot; no per-seat desktop stack</div></div>
+<div class="pillar reveal d1"><h3>The outside lane: DR Connect</h3><p>Primes, subs, and reviewers come into specific content under tight control. No standing accounts, no CUI in inboxes, no controlled data on their endpoints.</p><div class="proof">Supply chain collaboration without scope creep</div></div>
+</div>
+<p style="margin-top:26px;color:var(--steel);font-size:13.5px;">Need the repository on its own? <a href="product-sdr.html" style="color:var(--navy);">The Secure Data Room stands alone &rarr;</a></p>
+</div></section>
+
 <!-- ===== INBOUND CUI LOOP ===== -->
-<section class="light light-alt" style="border-top:1px solid var(--line);"><div class="wrap">
+<section class="light"><div class="wrap">
 <span class="mark on-light">In and out</span>
 <h2 class="sectitle">CUI enters the enclave. It never touches your network.</h2>
 <p class="lead">You can control where your own people put CUI. You cannot control what arrives. Both inbound paths have the same failure mode: the file lands somewhere out of bounds before anyone notices. CCE closes both.</p>
@@ -520,18 +534,7 @@ ary.</b></div>
 
 
 
-<section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
-<span class="mark on-light">One platform</span>
-<h2 class="sectitle">CCE and the Secure Data Room, blended by design</h2>
-<p class="lead">Not two products stitched together. One enclave with four jobs, each covered.</p>
-<div class="pillars">
-<div class="pillar reveal"><h3>The repository: Secure Data Room</h3><p>Every controlled file carries information rights management, watermarking, expiry, and an immutable audit trail. When the assessor asks how CUI is controlled, the answer is a report.</p><div class="proof">Maps to 85+ NIST SP 800-171 controls</div></div>
-<div class="pillar reveal d1"><h3>The workspace: the enclave around it</h3><p>Edit in fully Office-compatible OnlyOffice, open Visio, MS Project, email, media, and archives in built-in viewers, or host your own applications inside. Full desktops stay available for the few who need them. Downloads, clipboard, and printing are blocked by engineered default.</p><div class="proof">The lockdown is the default, not a project</div></div>
-<div class="pillar reveal"><h3>The doorway: one secured web session</h3><p>Any device with a browser reaches the work: desk, home, BYOD, shop floor. Nothing is stored locally, and there is no virtual desktop to license, harden, or administer per user.</p><div class="proof">No VDI &middot; no per-seat desktop stack</div></div>
-<div class="pillar reveal d1"><h3>The outside lane: DR Connect</h3><p>Primes, subs, and reviewers come into specific content under tight control. No standing accounts, no CUI in inboxes, no controlled data on their endpoints.</p><div class="proof">Supply chain collaboration without scope creep</div></div>
-</div>
-<p style="margin-top:26px;color:var(--steel);font-size:13.5px;">Need the repository on its own? <a href="product-sdr.html" style="color:var(--navy);">The Secure Data Room stands alone &rarr;</a></p>
-</div></section>
+
 
 <section class="fear"><div class="glow"></div><div class="wrap">
 <span class="mark">See it enforced</span>
