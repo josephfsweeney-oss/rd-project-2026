@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compliant Cloud Enclave | RegDOX Solutions</title>
-<meta name="robots" content="noindex,nofollow">
 <meta name="description" content="RegDOX CCE: a complete virtual workspace on AWS GovCloud with the Secure Data Room built in. No VDI, endpoints out of scope, one secured web session.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -419,7 +418,7 @@
 <section class="page-hero"><div class="glow"></div><div class="wrap">
 <span class="mark" style="justify-content:center;">Compliant Cloud Enclave &middot; CMMC Level 2</span>
 <h1>The scope your assessor can walk <span class="accent">in an afternoon.</span></h1>
-<p class="sub">RegDOX CCE is a complete virtual workspace on AWS GovCloud with the Secure Data Room built in: one secured web session where your team stores, edits, and collaborates on CUI. No virtual desktops. No MSP meter. And a boundary so small the assessment gets simple.</p>
+<p class="sub">CMMC Level 2 can be much easier and less expensive to achieve. CCE keeps every endpoint out of the CUI boundary, and it does not require a costly virtual desktop setup for each user. RegDOX has the platform and the advisory team to meet you where you are and carry you through the Level 2 journey.</p>
 <div class="ctas"><a class="btn btn-primary" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a></div>
 </div>
 
@@ -483,39 +482,43 @@
 <rect x="659" y="443" width="142" height="36" rx="18" fill="#7FE0EE"/>
 <text x="730" y="466" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="700" letter-spacing="2" fill="#062A32">DR CONNECT</text>
 </svg>
-<div class="cap">CUI never leaves the enclave, <b>so every device stays outside the CUI boundary.</b></div>
+<div class="cap">CUI never leaves the enclave, <b>so every device stays outside the CUI bound
+<!-- ===== NO VDI PER USER ===== -->
+<section class="light"><div class="wrap">
+<span class="mark on-light">The delivery wedge</span>
+<h2 class="sectitle">No virtual desktop per user</h2>
+<div class="split" style="align-items:start;">
+<div class="prose">
+<p><strong>Most enclaves are VDI at their core:</strong> every user who touches CUI gets a full virtual desktop. A desktop per seat means an operating system per seat, licensed, provisioned, patched, monitored, and defended, and that cost and risk model scales linearly with headcount.</p>
+<p><strong>CCE takes a different unit of delivery.</strong> People reach CUI through our own patented thin secure sessions, with viewers built in for email, Visio, MS Project, zip archives, audio, and video, so most CUI work never needs a desktop application at all. Full desktops stay available for the minority of users who genuinely need them; they are not imposed on everyone whose job is to read a drawing or check a spec.</p>
+<p>A full virtual desktop is the wrong unit of delivery for someone who just needs to see a drawing. CCE gives users exactly what the work requires, and reserves the heavyweight option for the cases that call for it.</p>
+</div>
+<div class="cards3" style="grid-template-columns:1fr;gap:14px;">
+<div class="card reveal"><span class="klabel">Cost</span><h4>No OS per seat</h4><p>You are not licensing an operating system, compute, and storage for every person who touches CUI. That is a structural difference, not a discount.</p></div>
+<div class="card reveal d1"><span class="klabel">Attack surface</span><h4>Less to defend</h4><p>A full OS per user is a full OS per user to patch, harden, and monitor. A thin session presents dramatically less surface, with no persistent desktop sitting between sessions.</p></div>
+<div class="card reveal d2"><span class="klabel">Operations</span><h4>No desktop estate</h4><p>Nothing to image, patch, and keep current, and far less to explain and defend at assessment.</p></div>
+</div>
+</div>
+</div></section>
+
+<!-- ===== INBOUND CUI LOOP ===== -->
+<section class="light light-alt" style="border-top:1px solid var(--line);"><div class="wrap">
+<span class="mark on-light">In and out</span>
+<h2 class="sectitle">CUI enters the enclave. It never touches your network.</h2>
+<p class="lead">You can control where your own people put CUI. You cannot control what arrives. Both inbound paths have the same failure mode: the file lands somewhere out of bounds before anyone notices. CCE closes both.</p>
+<div class="cards3" style="grid-template-columns:1fr 1fr;">
+<div class="card reveal"><span class="klabel">The supplier push &middot; DR Connect</span><h4>Sent straight into the room</h4><p>Each customer or vendor gets a unique email address tied to a designated data room inside your enclave. They send CUI to that address and it lands directly in the compliant room, never in a corporate mailbox, never on your network. Nothing for the third party to buy, install, or license. You get an instant notification and work it from inside the enclave.</p></div>
+<div class="card reveal d1"><span class="klabel">The portal pull &middot; in-enclave browsing</span><h4>Downloaded inside the boundary</h4><p>When a prime says "pull your technical data package from our portal," that download has to land somewhere. In CCE, your people browse external portals from a contained secure-browsing utility inside the enclave, so the file lands inside the boundary and never touches the device.</p></div>
+</div>
+<p style="margin-top:24px;color:#42566F;font-size:15px;"><strong>The complete loop:</strong> CUI enters by supplier push or your own pull, lives and is worked inside the enclave, and leaves only through the Secure Data Room's controlled sharing. Email and endpoints never carry CUI in either direction, which is exactly what keeps the mail stack and the device fleet out of the assessment.</p>
+</div></section>
+ary.</b></div>
 </div>
 
 
 </section>
 
-<section class="light"><div class="wrap">
-<span class="mark on-light">The difference</span>
-<h2 class="sectitle">A virtual workspace, not just a data repository</h2>
-<div class="split" style="align-items:center;">
-<div class="prose">
-<p>Most "enclave" offerings are really repositories: a compliant place to <strong>store</strong> CUI. But storage was never the hard part. The work is. The moment your people download a drawing to edit it, the device they edit it on enters your assessment, and the boundary you paid for starts leaking.</p>
-<p>CCE closes that gap because <strong>the repository and the workspace live in the same enclave.</strong> Files are stored in the Secure Data Room and worked on right there, in fully Office-compatible applications running inside the enclave. Nothing round-trips to the device, so nothing drags the device into scope.</p>
-<p><strong>One login. One boundary. The whole job.</strong></p>
-</div>
-<div style="border:1px solid var(--line);border-radius:14px;background:#fff;padding:26px;box-shadow:0 18px 44px rgba(19,51,94,.10);">
-<div style="border:1.5px dashed var(--accent);border-radius:10px;padding:20px;">
-<div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">RegDOX CCE &middot; Virtual Workspace</div>
-<div style="background:var(--accent);border-radius:8px;padding:14px 18px;margin-top:14px;">
-<div style="font-family:var(--font-display);font-weight:800;font-size:15px;color:#fff;">Secure Data Room</div>
-<div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#DFF6FA;margin-top:4px;">The CUI repository &middot; IRM &middot; watermarking &middot; audit trail</div>
-</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
-<span class="cert" style="color:#3A506F;border-color:var(--line);background:var(--paper);">OnlyOffice editing</span>
-<span class="cert" style="color:#3A506F;border-color:var(--line);background:var(--paper);">Visio &amp; Project viewers</span>
-<span class="cert" style="color:#3A506F;border-color:var(--line);background:var(--paper);">Your apps, hosted inside</span>
-<span class="cert" style="color:#3A506F;border-color:var(--line);background:var(--paper);">DR Connect</span>
-</div>
-</div>
-<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);text-align:center;margin-top:14px;">One secured web session &middot; nothing on the device</div>
-</div>
-</div>
-</div></section>
+
 
 <section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
 <span class="mark on-light">One platform</span>
@@ -558,12 +561,12 @@
 <span class="mark on-light">Why it wins</span>
 <h2 class="sectitle">Built to shrink the assessment, not your business</h2>
 <div class="pillars">
-<div class="pillar reveal"><h3>Endpoints out of scope</h3><p>CUI never reaches your devices, so they fall Out-of-Scope under &sect;170.19. The boundary collapses to the enclave and the people who use it.</p><div class="proof">Scoping grounded in regulation &middot; customers certified with it</div></div>
-<div class="pillar reveal d1"><h3>Your existing IT stays put</h3><p>The enclave sits alongside your current systems. Wall off the CUI slice of a mixed business, or separate a subsidiary's CUI from its commercial parent.</p><div class="proof">Runs at multi-billion-dollar mixed-business firms today</div></div>
-<div class="pillar reveal"><h3>Compliance as a service</h3><p>Turnkey provisioning on your timeline, backed by our Audit &amp; Assessment team with SSP support that drives you to a passing assessment.</p><div class="proof">Certified customers &middot; FedRAMP Moderate Equivalency &middot; ISO 27001</div></div>
-<div class="pillar reveal d1"><h3>Evidence on tap</h3><p>Every action inside the enclave lands in a tamper-proof, time-stamped audit trail. When the assessor asks, the answer is a report, not a scramble.</p><div class="proof">Auditing &amp; reporting built in from day one</div></div>
+<div class="pillar reveal"><h3>Your laptops never touch CUI. So your auditor never touches your laptops.</h3><p>CUI never reaches your endpoints, so they fall Out-of-Scope under &sect;170.19. The boundary collapses to the enclave and the people who use it, not your device fleet, and since scope is the biggest driver of CMMC cost, time, and risk, that is a cheaper, faster, lower-risk certification.</p><div class="proof">In assessment: the enclave's admin console is the only in-scope asset, with no Contractor Risk Managed Assets at all</div></div>
+<div class="pillar reveal d1"><h3>Don't rebuild your company to pass an audit.</h3><p>CCE sits alongside your existing IT. Wall off the regulated CUI slice without re-platforming the company, or cleanly separate a subsidiary's CUI from its commercial parent. Most CTI-dense suppliers are mostly-commercial businesses; you can't detonate the whole estate for the defense slice.</p><div class="proof">A multi-billion-dollar, mixed-business firm runs its defense work on CCE today</div></div>
+<div class="pillar reveal"><h3>You don't build it. You don't run it. You log in.</h3><p>We provision your enclave with the Secure Data Room already inside, and your people log in and work. We run the platform, hosting, patching, and FedRAMP posture underneath, with an Audit &amp; Assessment team that carries the compliance lift through to a passing assessment.</p><div class="proof">308 of 320 NIST 800-171A objectives addressed in RegDOX compliance documentation, validated in a live client certification</div></div>
+<div class="pillar reveal d1"><h3>Reach CUI anywhere. Store it nowhere.</h3><p>Any device with a browser, desk, remote, BYOD, or a kiosk at the machine, reaches CUI with nothing stored locally. Viewing a drawing at the machine shouldn't blow up your scope, and there's no desktop to provision for the kiosk either.</p><div class="proof">A flagship customer runs CCE on shop-floor kiosks today</div></div>
 </div>
-</div></section>
+</section>
 
 <section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap center" style="text-align:center;">
 <span class="mark on-light" style="justify-content:center;">Who carries the risk</span>
