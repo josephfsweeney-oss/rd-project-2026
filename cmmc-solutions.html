@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMMC Solutions | RegDOX Solutions</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="CMMC Level 2 with the smallest assessment boundary: Secure Data Room and Compliant Cloud Enclave, endpoints out of scope under 32 CFR 170.19.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1628;
+    --navy:#13335E;
+    --navy-deep:#0E2647;
+    --paper:#F5F6F4;
+    --paper-2:#EAEDEA;
+    --line:#D4D9DE;
+    --line-dark:#27406A;
+    --accent:#159AAC;
+    --accent-bright:#3CC6D8;
+    --accent-alt:#C0892C;
+    --accent-alt-bright:#DCA13C;
+    --warn:#C24A3C;
+    --warn-bright:#E2705F;
+    --ok:#5FB98A;
+    --danger:#9B3B2E;
+    --danger-bright:#D07A62;
+    --on-dark-1:#C7D2E2;
+    --on-dark-2:#9DB0CE;
+    --on-dark-3:#5E769A;
+    --surface-card-dark:#0E2A4E;
+    --surface-input:#0A1C36;
+    --steel:#5B7494;
+    --font-display:'Archivo',sans-serif;
+    --font-body:'IBM Plex Sans',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+    --maxw:1160px;
+    --r-btn:6px;
+    --r-panel:12px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.05;letter-spacing:-0.02em;}
+  p{margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1);}
+  .js .reveal.in{opacity:1;transform:none;}
+  .js .reveal.d1{transition-delay:.08s;}
+  .js .reveal.d2{transition-delay:.16s;}
+  .js .reveal.d3{transition-delay:.24s;}
+
+  /* ===== BLOG TICKER ===== */
+  .ticker{display:flex;align-items:stretch;background:var(--navy-deep);border-bottom:1px solid var(--line-dark);height:38px;overflow:hidden;}
+  .ticker[hidden]{display:none;}
+  .ticker-label{flex:none;display:flex;align-items:center;padding:0 16px;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#0a2026;background:var(--accent);font-weight:600;white-space:nowrap;}
+  .ticker-viewport{flex:1;overflow:hidden;display:flex;align-items:center;}
+  .ticker-track{display:flex;gap:0;width:max-content;animation:tickerscroll 45s linear infinite;}
+  .ticker:hover .ticker-track{animation-play-state:paused;}
+  @keyframes tickerscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .ticker-track a{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.03em;color:var(--on-dark-1);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;padding:0 8px;}
+  .ticker-track a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+  .ticker-track a::after{content:"\25C6";color:var(--accent-bright);font-size:7px;margin-left:16px;}
+  .ticker-track .tdate{color:var(--on-dark-3);margin-right:10px;}
+  @media(prefers-reduced-motion:reduce){.ticker-track{animation:none!important;}}
+
+  .mark{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;color:var(--accent-bright);}
+  .mark::before{content:"";width:16px;height:1px;background:var(--accent-bright);display:inline-block;flex:none;}
+  .mark.on-light{color:var(--accent);}
+  .mark.on-light::before{background:var(--accent);}
+
+  /* buttons */
+  .btn{font-family:var(--font-body);font-weight:600;font-size:15px;padding:14px 26px;border-radius:var(--r-btn);border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .15s ease,background .18s ease,box-shadow .18s ease,border-color .18s ease;position:relative;}
+  .btn .arrow{font-family:var(--font-mono);transition:transform .18s ease;}
+  .btn:hover .arrow{transform:translateX(4px);}
+  .btn-primary{background:var(--accent);color:#0a2026;border-color:var(--accent);box-shadow:0 0 0 0 rgba(60,198,216,0);}
+  .btn-primary:hover{background:var(--accent-bright);transform:translateY(-2px);box-shadow:0 12px 34px rgba(21,154,172,.38);}
+  .btn-ghost{background:rgba(255,255,255,.03);color:#fff;border-color:#33507C;backdrop-filter:blur(6px);}
+  .btn-ghost:hover{border-color:#7A94BE;background:rgba(255,255,255,.06);}
+  .btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .cert{font-family:var(--font-mono);font-size:11px;letter-spacing:0.07em;color:var(--on-dark-2);border:1px solid var(--line-dark);background:rgba(14,42,78,.4);padding:8px 14px;border-radius:999px;text-transform:uppercase;display:inline-block;white-space:nowrap;}
+
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(60,198,216,.5);}50%{opacity:.4;box-shadow:0 0 0 6px rgba(60,198,216,0);}}
+
+  /* ===== NAV ===== */
+  .topbar{position:sticky;top:0;z-index:80;background:rgba(10,22,40,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(39,64,106,.6);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px;}
+  .logo{font-family:var(--font-display);font-weight:900;font-size:21px;letter-spacing:-0.03em;display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;}
+  .logo .dot{width:13px;height:13px;border:3px solid var(--accent);border-radius:50%;flex:none;}
+  .nav{display:flex;gap:26px;font-size:14.5px;font-weight:500;align-items:center;height:100%;}
+  .nav a{color:var(--on-dark-1);text-decoration:none;transition:color .15s;}
+  .nav a:hover{color:#fff;}
+  .navitem{position:relative;display:flex;align-items:center;height:100%;}
+  .navtop{display:inline-flex;align-items:center;gap:6px;height:100%;}
+  .chev{font-size:9px;color:var(--on-dark-3);transition:transform .18s ease,color .15s ease;}
+  .navitem:hover .chev,.navitem:focus-within .chev{transform:rotate(180deg);color:var(--accent-bright);}
+  .drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);padding-top:10px;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:90;}
+  .navitem:hover .drop,.navitem:focus-within .drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+  .drop-inner{background:linear-gradient(170deg,#10294D,#0B1E3C);border:1px solid var(--line-dark);border-radius:12px;box-shadow:0 26px 60px rgba(0,0,0,.5);padding:10px;width:320px;}
+  .drop-inner a{display:block;padding:11px 14px;border-radius:8px;transition:background .14s ease;}
+  .drop-inner a:hover,.drop-inner a:focus-visible{background:rgba(21,154,172,.10);}
+  .drop-inner .d-nm{display:block;font-family:var(--font-display);font-weight:700;font-size:14.5px;color:#fff;}
+  .drop-inner .d-ds{display:block;font-size:12.5px;color:var(--on-dark-2);margin-top:3px;line-height:1.4;}
+  @media(max-width:880px){.nav{display:none;}}
+  .topbar .btn{padding:10px 20px;font-size:14px;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;overflow:hidden;color:#fff;padding:104px 0 0;}
+  .hero .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+  .hero .g1{width:640px;height:640px;background:radial-gradient(circle,rgba(19,51,94,.9),transparent 65%);top:-260px;left:-160px;}
+  .hero .g2{width:560px;height:560px;background:radial-gradient(circle,rgba(21,154,172,.22),transparent 65%);top:-140px;right:-120px;animation:drift 14s ease-in-out infinite alternate;}
+  .hero .g3{width:500px;height:500px;background:radial-gradient(circle,rgba(14,42,78,.9),transparent 65%);bottom:-180px;left:32%;}
+  @keyframes drift{from{transform:translate(0,0);}to{transform:translate(-70px,50px);}}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(122,150,190,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(122,150,190,.05) 1px,transparent 1px);background-size:38px 38px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 25%,transparent 80%);}
+  .hero .wrap{position:relative;z-index:1;text-align:center;max-width:920px;}
+  .hero .badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .hero h1{font-size:66px;font-weight:900;letter-spacing:-0.035em;margin-top:30px;line-height:.98;}
+  .hero h1 .amber{background:linear-gradient(100deg,var(--accent-bright),#A9EDF6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .sig{font-family:var(--font-display);font-weight:700;font-size:21px;color:#fff;margin-top:28px;}
+  .hero .sub{color:var(--on-dark-1);font-size:18px;line-height:1.65;margin:16px auto 0;max-width:38em;}
+  .hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+  .mandates{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px;margin:34px auto 0;}
+  @media(max-width:640px){.mandates{grid-template-columns:1fr;}}
+  .mandate{display:block;text-align:left;text-decoration:none;background:rgba(14,42,78,.45);border:1px solid var(--line-dark);border-top:3px solid var(--accent);border-radius:10px;padding:18px 20px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease;}
+  .mandate:hover{transform:translateY(-3px);background:rgba(14,42,78,.65);}
+  .mandate.teal{border-top-color:var(--accent);}
+  .mandate.teal:hover{border-color:var(--accent);border-top-color:var(--accent);box-shadow:0 14px 38px rgba(21,154,172,.22);}
+  .mandate.amber{border-top-color:var(--accent-alt);}
+  .mandate.amber:hover{border-color:var(--accent-alt);border-top-color:var(--accent-alt);box-shadow:0 14px 38px rgba(192,137,44,.22);}
+  .mandate .m-label{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;}
+  .mandate.teal .m-label{color:var(--accent-bright);}
+  .mandate.amber .m-label{color:var(--accent-alt-bright);}
+  .mandate .m-nm{display:block;font-family:var(--font-display);font-weight:800;font-size:19px;color:#fff;margin-top:8px;letter-spacing:-0.01em;}
+  .mandate .m-ds{display:block;font-size:13.5px;color:var(--on-dark-1);margin-top:6px;line-height:1.45;}
+  .mandate .m-go{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:14px;}
+  .mandate.teal .m-go{color:var(--accent-bright);}
+  .mandate.amber .m-go{color:var(--accent-alt-bright);}
+  @media(max-width:880px){.hero h1{font-size:44px;}.hero{padding-top:72px;}}
+
+  /* ===== INTERACTIVE DEMO ===== */
+  .demo-outer{position:relative;z-index:1;margin-top:72px;padding-bottom:96px;}
+  .demo{max-width:980px;margin:0 auto;border:1px solid var(--line-dark);border-radius:var(--r-panel);background:linear-gradient(170deg,rgba(16,43,80,.85),rgba(11,30,60,.9));box-shadow:0 30px 90px rgba(0,0,0,.45),0 0 0 1px rgba(122,150,190,.05) inset;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);overflow:hidden;}
+  .demo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--line-dark);flex-wrap:wrap;}
+  .demo-head .t{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FA6C6;}
+  .toggle{display:flex;background:var(--surface-input);border:1px solid var(--line-dark);border-radius:999px;padding:4px;}
+  .toggle button{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:9px 18px;border:none;border-radius:999px;background:transparent;color:var(--on-dark-2);cursor:pointer;transition:all .2s ease;}
+  .toggle button.active{background:var(--accent);color:#0a2026;font-weight:600;}
+  .demo-count{padding:22px 24px 0;text-align:center;}
+  .demo-count .n{font-family:var(--font-display);font-weight:900;font-size:56px;letter-spacing:-0.03em;line-height:1;color:var(--warn-bright);transition:color .4s ease;}
+  .demo.cce .demo-count .n{color:var(--accent-bright);}
+  .demo-count .l{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-3);margin-top:10px;}
+  .stage{position:relative;padding:38px 34px 40px;min-height:340px;}
+  .boundary{position:absolute;border:1px dashed rgba(226,112,95,.55);background:rgba(194,74,60,.06);border-radius:6px;transition:top .85s cubic-bezier(.4,.1,.2,1),left .85s cubic-bezier(.4,.1,.2,1),width .85s cubic-bezier(.4,.1,.2,1),height .85s cubic-bezier(.4,.1,.2,1),border-color .5s ease,background .5s ease;pointer-events:none;}
+  .demo.cce .boundary{border-color:rgba(60,198,216,.55);background:rgba(21,154,172,.07);}
+  /* reticle corner brackets */
+  .boundary .bc{position:absolute;width:16px;height:16px;border:3px solid var(--warn-bright);transition:border-color .5s ease;}
+  .boundary .bc1{top:-2px;left:-2px;border-right:none;border-bottom:none;}
+  .boundary .bc2{top:-2px;right:-2px;border-left:none;border-bottom:none;}
+  .boundary .bc3{bottom:-2px;left:-2px;border-right:none;border-top:none;}
+  .boundary .bc4{bottom:-2px;right:-2px;border-left:none;border-top:none;}
+  .demo.cce .boundary .bc{border-color:var(--accent-bright);}
+  /* scope label riding the top edge */
+  .boundary .blabel{position:absolute;top:-11px;left:26px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn-bright);background:#0D2344;padding:3px 10px;border-radius:999px;border:1px solid rgba(226,112,95,.5);transition:color .5s ease,border-color .5s ease;white-space:nowrap;}
+  .demo.cce .boundary .blabel{color:var(--accent-bright);border-color:rgba(60,198,216,.5);}
+  /* scan line sweeping inside the scope */
+  .boundary .scan{position:absolute;left:6px;right:6px;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(226,112,95,.5),transparent);animation:scan 3.2s ease-in-out infinite;transition:background .5s ease;}
+  .demo.cce .boundary .scan{background:linear-gradient(90deg,transparent,rgba(60,198,216,.55),transparent);}
+  @keyframes scan{0%,100%{top:4%;}50%{top:92%;}}
+  .stage-grid{position:relative;display:flex;flex-direction:column;gap:16px;align-items:center;}
+  .enclave{border:1px solid var(--accent);background:var(--surface-card-dark);border-radius:8px;padding:14px 30px;text-align:center;min-width:280px;}
+  .enclave .nm{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;}
+  .enclave .st{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);margin-top:5px;}
+  .sdr-mini{display:none;margin-top:10px;background:var(--accent);border-radius:6px;padding:9px 14px;text-align:left;}
+  .demo.cce .sdr-mini{display:block;}
+  .sdr-nm{display:block;font-family:var(--font-display);font-weight:800;font-size:12.5px;color:#fff;letter-spacing:.01em;}
+  .sdr-ds{display:block;font-family:var(--font-mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:#DFF6FA;margin-top:3px;}
+  .kvm{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-3);opacity:0;transition:opacity .5s ease .3s;}
+  .demo.cce .kvm{opacity:1;}
+  .chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .dchip{border:1px solid #2E4A73;background:rgba(14,42,78,.5);border-radius:8px;padding:11px 16px;text-align:center;min-width:96px;transition:border-color .5s ease,background .5s ease;}
+  .dchip .nm{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-1);}
+  .dchip .st{font-family:var(--font-mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--warn-bright);margin-top:6px;transition:color .45s ease;}
+  .demo.cce .dchip .st{color:var(--ok);}
+  .demo.cce .dchip{border-color:#24507A;background:rgba(14,42,78,.25);}
+  .stage-note{text-align:center;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-3);padding:0 24px 24px;}
+  .stage-note b{color:var(--on-dark-1);font-weight:500;}
+
+  /* ===== MARQUEE ===== */
+  .marquee-sec{background:var(--paper);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line);padding:30px 0;overflow:hidden;}
+  .marquee{display:flex;gap:44px;align-items:center;width:max-content;animation:scroll 32s linear infinite;}
+  .marquee-sec:hover .marquee{animation-play-state:paused;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .marquee .cert{flex:none;align-self:center;color:#3A506F;border-color:var(--line);background:transparent;}
+  .badge-card{flex:none;display:flex;align-items:center;justify-content:center;}
+  .badge-card img{max-height:54px;max-width:130px;width:auto;height:auto;display:block;}
+
+  /* client logo grid */
+  .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px 28px;margin-top:44px;align-items:center;}
+  @media(max-width:880px){.logo-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:560px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
+  .logo-card{display:flex;align-items:center;justify-content:center;height:88px;padding:10px 14px;}
+  .logo-card img{max-height:52px;max-width:100%;width:auto;height:auto;display:block;filter:grayscale(1);opacity:.62;transition:filter .2s ease,opacity .2s ease,transform .2s ease;}
+  .logo-card:hover img{filter:none;opacity:1;transform:translateY(-3px);}
+
+  /* ===== LIGHT SECTIONS ===== */
+  .light{background:var(--paper);color:var(--ink);background-image:linear-gradient(rgba(19,51,94,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(19,51,94,.028) 1px,transparent 1px);background-size:38px 38px;}
+  .light-alt{background-color:var(--paper-2);}
+
+  /* ghost watermark: document vernacular, one per key section */
+  .wm-host{position:relative;overflow:hidden;}
+  .wm{position:absolute;font-family:var(--font-display);font-weight:900;letter-spacing:-0.04em;color:var(--navy);opacity:.045;line-height:.8;pointer-events:none;user-select:none;white-space:nowrap;}
+  .fear .wm{color:#fff;opacity:.035;}
+  section{padding:96px 0;}
+  @media(max-width:720px){section{padding:60px 0;}}
+  .sectitle{font-size:40px;font-weight:800;margin-top:14px;letter-spacing:-0.025em;}
+  .lead{color:var(--steel);font-size:17px;margin-top:16px;max-width:54em;line-height:1.65;}
+  .center{text-align:center;}
+  .center .lead{margin-left:auto;margin-right:auto;}
+
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  @media(max-width:880px){.cards3{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:var(--r-panel);padding:30px;background:#fff;display:flex;flex-direction:column;position:relative;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+  .card::after{content:"";position:absolute;inset:0;border-radius:var(--r-panel);background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(21,154,172,.07),transparent 60%);opacity:0;transition:opacity .25s;pointer-events:none;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 24px 54px rgba(19,51,94,.14);border-color:var(--navy);}
+  .card:hover::after{opacity:1;}
+  .card .klabel{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .card h4{font-size:21px;font-weight:800;margin-top:14px;line-height:1.15;}
+  .card p{color:#42566F;font-size:15px;margin-top:12px;line-height:1.6;flex:1;}
+  .card .go{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-top:22px;text-decoration:none;display:inline-flex;gap:8px;align-items:center;font-weight:600;}
+  .card .go:hover{color:var(--ink);}
+
+  /* tiers */
+  .tier{display:grid;grid-template-columns:64px 1fr;border:1px solid var(--line);border-radius:var(--r-panel);background:#fff;overflow:hidden;margin-top:16px;transition:transform .2s ease,box-shadow .2s ease;}
+  .tier:hover{transform:translateX(6px);}
+  .tier-num{background:var(--paper-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:600;font-size:14px;color:var(--accent);border-right:1px solid var(--line);}
+  .tier-body{padding:24px 28px;}
+  .tier-body h4{font-size:20px;font-weight:800;}
+  .tier-body p{color:#46586F;font-size:15px;margin-top:8px;line-height:1.6;max-width:62em;}
+  .tier.foundation{background:var(--ink);border-color:var(--ink);box-shadow:0 20px 50px rgba(10,22,40,.35);}
+  .tier.foundation .tier-num{background:var(--surface-input);color:var(--accent-bright);border-right-color:var(--line-dark);}
+  .tier.foundation h4{color:#fff;}
+  .tier.foundation p{color:var(--on-dark-1);}
+  .flag{display:inline-block;margin-top:14px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:#0a2026;background:var(--accent);padding:6px 12px;border-radius:999px;}
+
+  /* fear */
+  .fear{background:var(--navy-deep);color:#fff;position:relative;overflow:hidden;}
+  .fear .glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(194,74,60,.16),transparent 65%);filter:blur(80px);top:-160px;right:-120px;pointer-events:none;}
+  .fear .wrap{position:relative;z-index:1;}
+  .fear .sectitle{color:#fff;}
+  .fear-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;margin-top:40px;align-items:start;}
+  @media(max-width:880px){.fear-grid{grid-template-columns:1fr;}}
+  .fear-body p{color:var(--on-dark-1);font-size:16px;line-height:1.7;}
+  .fear-body p + p{margin-top:16px;}
+  .fear-body strong{color:#fff;font-weight:600;}
+  .bridge{background:rgba(10,33,64,.8);border:1px solid var(--line-dark);border-left:3px solid var(--accent);padding:22px 26px;font-family:var(--font-display);font-weight:700;font-size:19px;color:#fff;border-radius:8px;line-height:1.35;margin-bottom:18px;}
+
+  .panel{border:1px solid var(--line-dark);background:linear-gradient(165deg,#102B50,#0B1E3C);border-radius:var(--r-panel);position:relative;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+  .panel .phead{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line-dark);font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8FA6C6;}
+  .panel .live{color:var(--ok);display:flex;align-items:center;gap:7px;}
+  .panel .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block;animation:pulse 1.8s infinite;}
+  .feed{font-family:var(--font-mono);font-size:11.5px;color:var(--on-dark-2);padding:8px 20px 18px;height:196px;overflow:hidden;}
+  .feed .ln{display:flex;gap:9px;align-items:center;white-space:nowrap;padding:6px 0;border-top:1px dotted #22405f;animation:lnin .45s ease;}
+  .feed .ln:first-child{border-top:none;}
+  .feed .ln .t{color:var(--on-dark-3);}
+  .feed .ln .op{color:#84ABD8;text-transform:uppercase;min-width:74px;}
+  .feed .ln .ob{color:#B2C2DA;flex:1;overflow:hidden;text-overflow:ellipsis;}
+  .feed .ln .ok{color:var(--ok);}
+  .feed .ln .blk{color:var(--accent-bright);}
+  @keyframes lnin{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
+  .panel-cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-3);margin-top:14px;text-align:center;}
+
+  /* stats */
+  .stats{background:var(--ink);color:#fff;padding:72px 0;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);}
+  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;}
+  @media(max-width:760px){.stats .wrap{grid-template-columns:1fr;gap:32px;}}
+  .stat .n{font-family:var(--font-display);font-weight:900;font-size:64px;color:var(--accent-bright);letter-spacing:-0.03em;line-height:1;}
+  .stat .d{margin-top:14px;font-size:15px;line-height:1.55;color:var(--on-dark-1);max-width:22em;}
+  .stat .src{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-3);margin-top:12px;}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+  @media(max-width:760px){.pillars{grid-template-columns:1fr;}}
+  .pillar{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:28px 30px;background:#fff;transition:transform .2s ease,box-shadow .2s ease;}
+  .pillar:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(19,51,94,.12);}
+  .pillar h3{font-size:22px;font-weight:800;line-height:1.2;}
+  .pillar p{color:#42566F;font-size:15px;margin-top:12px;line-height:1.65;}
+  .pillar .proof{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:18px;padding-top:14px;border-top:1px dotted var(--line);line-height:1.7;}
+
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+  @media(max-width:880px){.who-grid{grid-template-columns:1fr;}}
+
+  /* convert */
+  .convert{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:120px 0;}
+  .convert .glow{position:absolute;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(21,154,172,.16),transparent 62%);filter:blur(90px);top:-260px;left:50%;transform:translateX(-50%);pointer-events:none;}
+  .convert .wrap{position:relative;z-index:1;text-align:center;max-width:840px;}
+  .convert h2{font-size:46px;font-weight:900;letter-spacing:-0.03em;margin-top:18px;}
+  .convert p{color:var(--on-dark-1);font-size:17px;margin:22px auto 0;max-width:36em;line-height:1.65;}
+  .convert .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px;}
+  .convert .phone{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--on-dark-2);margin-top:28px;display:block;text-decoration:none;}
+  .convert .phone:hover{color:#fff;}
+  @media(max-width:720px){.convert h2{font-size:34px;}}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--on-dark-2);border-top:1px solid var(--line-dark);padding:56px 0 42px;font-size:14px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-grid h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-3);margin:0 0 16px;font-weight:500;}
+  .foot-grid a{display:block;color:var(--on-dark-1);text-decoration:none;padding:4px 0;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-legal{border-top:1px solid var(--line-dark);margin-top:44px;padding-top:22px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:var(--on-dark-3);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .foot-legal a{color:var(--on-dark-3);text-decoration:none;}
+  .foot-legal a:hover{color:var(--on-dark-1);}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}.js .reveal{opacity:1;transform:none;}.marquee{animation:none!important;}}
+</style>
+<style>
+  .page-hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:84px 0 72px;text-align:center;}
+  .page-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(122,150,190,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(122,150,190,.05) 1px,transparent 1px);background-size:38px 38px;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 10%,#000 25%,transparent 80%);mask-image:radial-gradient(ellipse 80% 80% at 50% 10%,#000 25%,transparent 80%);}
+  .page-hero .glow{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(90px);pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 65%);top:-200px;right:-120px;}
+  .page-hero .wrap{position:relative;z-index:1;max-width:860px;}
+  .page-hero h1{font-size:48px;font-weight:900;letter-spacing:-0.03em;margin-top:22px;line-height:1.0;}
+  .page-hero h1 .accent{color:var(--accent-bright);}
+  .page-hero .sub{color:var(--on-dark-1);font-size:17.5px;line-height:1.65;margin:20px auto 0;max-width:40em;}
+  .page-hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
+  @media(max-width:720px){.page-hero h1{font-size:34px;}}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:44px;}
+  @media(max-width:860px){.split{grid-template-columns:1fr;}}
+  .split .prose p{color:#42566F;font-size:15.5px;line-height:1.7;}
+  .split .prose p+p{margin-top:14px;}
+  .split .prose strong{color:var(--ink);}
+  .checklist{list-style:none;margin:18px 0 0;padding:0;}
+  .checklist li{padding:10px 0 10px 30px;position:relative;color:#42566F;font-size:15px;line-height:1.5;border-top:1px dotted var(--line);}
+  .checklist li:first-child{border-top:none;}
+  .checklist li::before{content:"\2713";position:absolute;left:2px;top:9px;color:var(--accent);font-weight:700;}
+  .faq{margin-top:38px;max-width:800px;}
+  .faq details{border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:12px;padding:0 22px;}
+  .faq summary{font-family:var(--font-display);font-weight:700;font-size:16.5px;padding:18px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  .faq summary::after{content:"+";font-family:var(--font-mono);color:var(--accent);font-size:18px;}
+  .faq details[open] summary::after{content:"\2212";}
+  .faq details p{color:#42566F;font-size:15px;line-height:1.65;padding-bottom:18px;}
+  .contact-form label{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin:18px 0 6px;}
+  .contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px 14px;font-family:var(--font-body);font-size:15px;color:var(--ink);box-sizing:border-box;}
+  .contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  .post-card .pdate{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);}
+</style>
+
+<style>
+  /* enclave & endpoint map (CMMC hero) */
+  .emap-outer{position:relative;z-index:1;margin-top:64px;padding-bottom:88px;}
+  .emap{max-width:1000px;margin:0 auto;border:1px solid rgba(60,198,216,.4);border-radius:12px;background:linear-gradient(170deg,#12335A,#0A1E3E);box-shadow:0 0 0 1px rgba(60,198,216,.12),0 34px 90px rgba(0,0,0,.55),0 0 90px rgba(21,154,172,.18);overflow:hidden;}
+  .emap-head{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line-dark);font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8CCE6;}
+  .emap-head .reg{color:var(--accent-bright);}
+  .emap-grid{display:grid;grid-template-columns:1.05fr 84px .95fr;gap:0;padding:30px 30px 24px;align-items:stretch;}
+  .emap-enclave{grid-row:1/5;position:relative;border:2px dashed rgba(60,198,216,.75);border-radius:10px;background:rgba(21,154,172,.07);padding:24px 22px 20px;}
+  .emap-btag{position:absolute;top:-13px;left:24px;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#0a2026;background:var(--accent-bright);padding:5px 14px;border-radius:999px;font-weight:600;}
+  .emap-etitle{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7FE0EE;}
+  .emap-esub{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-3);margin-top:4px;}
+  .emap-sdr{background:var(--accent);border-radius:8px;padding:18px 20px;margin-top:16px;box-shadow:0 8px 26px rgba(21,154,172,.35);}
+  .emap-sdr h4{font-family:var(--font-display);font-weight:800;font-size:18px;color:#fff;margin:0;}
+  .emap-sdr .d{font-size:12.5px;color:#DFF6FA;margin-top:4px;}
+  .emap-sdr ul{list-style:none;margin:12px 0 0;padding:0;}
+  .emap-sdr li{font-size:12.5px;color:#EAFBFE;padding:4px 0 4px 18px;position:relative;}
+  .emap-sdr li::before{content:"\2713";position:absolute;left:0;color:#fff;font-weight:700;font-size:11px;}
+  .emap-sdr .tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#B9F0F8;margin-top:12px;display:block;}
+  .emap-conn{position:relative;display:flex;align-items:center;justify-content:center;}
+  .emap-conn::before{content:"";position:absolute;left:8px;right:8px;top:50%;border-top:2px dashed rgba(157,176,206,.55);}
+  .emap-conn::after{content:"";position:absolute;left:6px;top:50%;transform:translateY(-50%) rotate(45deg);width:8px;height:8px;border-left:2px solid rgba(157,176,206,.75);border-bottom:2px solid rgba(157,176,206,.75);}
+  .emap-conn.dr::before{border-top:2px solid var(--accent-bright);}
+  .emap-conn.dr::after{border-color:var(--accent-bright);}
+  .emap-conn .drpill{position:relative;z-index:1;font-family:var(--font-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#0a2026;background:var(--accent-bright);padding:4px 9px;border-radius:999px;font-weight:600;white-space:nowrap;}
+  .emap-dev{border:1px solid #3B5E8A;background:rgba(18,48,86,.8);border-radius:8px;padding:13px 16px;margin:5px 0;}
+  .emap-dev .nm{font-family:var(--font-display);font-weight:700;font-size:14px;color:#E4ECF7;}
+  .emap-dev .st{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7BD8A8;margin-top:4px;font-weight:600;}
+  .emap-dev.supply{border-style:dashed;border-color:#4A6E9A;}
+  .emap-dev.supply .st{color:var(--on-dark-2);}
+  .emap-foot{text-align:center;font-size:14px;color:var(--on-dark-1);padding:0 24px 24px;}
+  .emap-foot b{color:#7FE0EE;}
+  @media(max-width:760px){
+    .emap-grid{grid-template-columns:1fr;padding:24px 18px 16px;}
+    .emap-enclave{grid-row:auto;margin-bottom:18px;}
+    .emap-conn{display:none;}
+  }
+</style>
+<style>
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;}
+  @media(max-width:960px){.grid4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.grid4{grid-template-columns:1fr;}}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px;}
+  @media(max-width:860px){.vgrid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.vgrid{grid-template-columns:1fr;}}
+  .vchip{border:1px solid var(--line);border-radius:10px;background:#fff;padding:18px 20px;}
+  .vchip .t{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink);}
+  .vchip .t::before{content:"\2713";flex:none;width:20px;height:20px;border-radius:50%;background:rgba(95,185,138,.16);color:#2E8B5F;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;}
+  .vchip .s{font-size:13px;color:var(--steel);margin-top:6px;}
+  .phase-flag{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5E769A;background:#E7EBF1;border:1px solid #B9C4D4;border-radius:999px;padding:3px 9px;margin-top:10px;}
+  .card.paused{border:2px solid #A8B6C9;background:#F1F4F8;position:relative;box-shadow:0 0 0 5px rgba(148,163,184,.14);}
+  .card.paused h4,.card.paused p{color:#5E769A;}
+  .card.paused .klabel{color:#7C8DA6;}
+  .paused-tag{position:absolute;top:-13px;right:14px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#44566F;background:#DDE3EB;border:1.5px solid #A8B6C9;border-radius:999px;padding:4px 12px;font-weight:600;}
+</style>
+<style>
+  .mini-steps5{margin:34px 0 0;padding:0;}
+  .mini-steps5 li{list-style:none;display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px dotted var(--line);}
+  .mini-steps5 .n{font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:600;flex:none;}
+  .mini-steps5 b{font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:15.5px;}
+  .mini-steps5 span.d{color:#42566F;font-size:14px;}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="dot"></span>RegDOX</a>
+    <nav class="nav" aria-label="Primary">
+      <div class="navitem">
+        <a href="products.html" class="navtop" aria-haspopup="true">Products <span class="chev">&#9662;</span></a>
+        <div class="drop">
+          <div class="drop-inner">
+            <a href="product-cce.html"><span class="d-nm">Compliant Cloud Enclave</span><span class="d-ds">CMMC Level 2 with your endpoints out of scope</span></a>
+            <a href="product-sdr.html"><span class="d-nm">Secure Data Room</span><span class="d-ds">ITAR technical data, U.S. Persons only, full audit trail</span></a>
+            <a href="https://www.regdox.com/regdox-cloud-products/dr-connect/"><span class="d-nm">DR Connect</span><span class="d-ds">Controlled external access without spilling CUI</span></a>
+            <a href="https://www.regdox.com/regdox-cloud-products/sequester/"><span class="d-nm">Sequester</span><span class="d-ds">Isolate and hold sensitive data under seal</span></a>
+            <a href="https://www.regdox.com/regdox-cloud-products/long-term-cloud-storage-solutions/"><span class="d-nm">Long-Term Cloud Storage</span><span class="d-ds">Retention obligations without new infrastructure</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="navitem">
+        <a href="https://www.regdox.com/compliance-use-cases/" class="navtop" aria-haspopup="true">Compliance <span class="chev">&#9662;</span></a>
+        <div class="drop">
+          <div class="drop-inner">
+            <a href="cmmc-solutions.html"><span class="d-nm">CMMC Solutions</span><span class="d-ds">Level 2 certification with the smallest boundary</span></a>
+            <a href="itar-solutions.html"><span class="d-nm">ITAR Solutions</span><span class="d-ds">Export-controlled technical data, compliantly managed</span></a>
+            <a href="https://www.regdox.com/compliance-use-cases/dfars-solutions/"><span class="d-nm">DFARS Solutions</span><span class="d-ds">Meet the 7012 bar with validated evidence</span></a>
+            <a href="https://www.regdox.com/compliance-use-cases/ear-solutions/"><span class="d-nm">EAR Solutions</span><span class="d-ds">Dual-use export control for commercial tech</span></a>
+            <a href="compare-regdox.html"><span class="d-nm">Compare RegDOX</span><span class="d-ds">Side by side against the MSP-built stack</span></a>
+            <a href="https://www.regdox.com/compliance-use-cases/faqs/"><span class="d-nm">Compliance FAQs</span><span class="d-ds">Straight answers on scope, assets, and assessment</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="navitem">
+        <a href="resources.html" class="navtop" aria-haspopup="true">Resources <span class="chev">&#9662;</span></a>
+        <div class="drop">
+          <div class="drop-inner">
+            <a href="https://www.regdox.com/resources/blog/"><span class="d-nm">Blog</span><span class="d-ds">Inside the CUI boundary, weekly</span></a>
+            <a href="https://www.regdox.com/resources/news/"><span class="d-nm">News</span><span class="d-ds">Company and regulatory updates</span></a>
+            <a href="https://www.regdox.com/resources/fact-and-data-sheets/"><span class="d-nm">Fact &amp; Data Sheets</span><span class="d-ds">One-pagers for your team and your assessor</span></a>
+            <a href="https://www.regdox.com/resources/videos/"><span class="d-nm">Videos &amp; Podcasts</span><span class="d-ds">See the platform and hear the arguments</span></a>
+            <a href="https://www.regdox.com/resources/support/"><span class="d-nm">Support</span><span class="d-ds">Around-the-clock help for existing customers</span></a>
+          </div>
+        </div>
+      </div>
+      <a href="services.html" class="navtop">Services</a>
+      <a href="about.html" class="navtop">About</a>
+    </nav>
+    <a class="btn btn-primary" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a>
+  </div>
+</header>
+
+<section class="page-hero" style="padding-bottom:0;"><div class="glow"></div><div class="wrap">
+<span class="mark" style="justify-content:center;">CMMC Solutions</span>
+<h1>CMMC Level 2 with the <span class="accent">smallest boundary in the room.</span></h1>
+<p class="sub">Two ways to get there, both built on the same principle: your CUI stays inside a purpose-built environment, and the environment carries the proof. Start with a repository, or collapse your whole assessment into an enclave.</p>
+<div class="ctas"><a class="btn btn-primary" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a></div>
+</div>
+
+
+  <!-- enclave & endpoint map -->
+  <div class="emap-outer">
+    <div class="wrap" style="max-width:1040px;">
+      <div class="emap reveal in d3">
+        <div class="emap-head"><span>The Enclave Model</span><span class="reg">32 CFR &sect;170.19</span></div>
+        <div class="emap-grid">
+          <div class="emap-enclave">
+            <span class="emap-btag">CUI Boundary</span>
+            <div class="emap-etitle">Compliant Cloud Environment</div>
+            <div class="emap-esub">The Secure Enclave</div>
+            <div class="emap-sdr">
+              <h4>Secure Data Room</h4>
+              <div class="d">The CUI document repository</div>
+              <ul>
+                <li>Access controls &amp; permissions</li>
+                <li>Collaboration on Office &amp; other files</li>
+                <li>Auditing &amp; reporting built in</li>
+              </ul>
+              <span class="tag">Compliant out of the box</span>
+            </div>
+          </div>
+          <div class="emap-conn"></div>
+          <div class="emap-dev"><div class="nm">Office workstations</div><div class="st">Out of Scope</div></div>
+          <div class="emap-conn"></div>
+          <div class="emap-dev"><div class="nm">Remote laptops</div><div class="st">Out of Scope</div></div>
+          <div class="emap-conn"></div>
+          <div class="emap-dev"><div class="nm">Mobile devices</div><div class="st">Out of Scope</div></div>
+          <div class="emap-conn dr"><span class="drpill">DR Connect</span></div>
+          <div class="emap-dev supply"><div class="nm">Contractor supply chain</div><div class="st">Primes, subs &amp; partners</div></div>
+        </div>
+        <div class="emap-foot">CUI never leaves the enclave, <b>so every device stays outside the CUI boundary.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY NOW ===== -->
+<section class="light"><div class="wrap">
+<span class="mark on-light">Why now</span>
+<h2 class="sectitle">CMMC is already in contracts</h2>
+<p class="lead">Phase 1 is underway: self-assessments in new DoD solicitations, affirmed annually in SPRS. Getting assessment-ready typically takes 6 to 12 months. Starting your pre-assessment now is on time, not early.</p>
+<div class="grid4">
+<div class="card reveal"><span class="klabel">Phase 1 &middot; Nov 2025</span><h4>Underway now</h4><p>Level 1 and 2 self-assessments required in new DoD solicitations, affirmed annually in SPRS.</p></div>
+<div class="card reveal d1"><span class="klabel">Phase 2 &middot; Nov 2026</span><h4>C3PAO required</h4><p>Most contracts involving CUI require third-party Level 2 certification.</p><span class="phase-flag">Rollout currently suspended</span></div>
+<div class="card reveal d2"><span class="klabel">Phase 3 &middot; Nov 2027</span><h4>Options included</h4><p>Certification requirements extend to option exercises on existing contracts.</p></div>
+<div class="card reveal d3"><span class="klabel">Phase 4 &middot; Nov 2028</span><h4>Full rollout</h4><p>CMMC requirements in all applicable solicitations and contracts.</p></div>
+</div>
+<p style="margin-top:22px;color:var(--steel);font-size:13.5px;">The Phase 2 timeline is suspended as of July 2026. The direction is not. The contractors who keep moving own the queue when it restarts.</p>
+</div></section>
+
+<!-- ===== KNOW YOUR LEVEL ===== -->
+<section class="light"><div class="wrap">
+<span class="mark on-light">Know your level</span>
+<h2 class="sectitle">Three levels. Most of the DIB needs Level 2.</h2>
+<p class="lead">CMMC applies to the unclassified networks of an estimated 300,000+ organizations that process, store, or transmit Federal Contract Information or CUI. Which level you owe depends on what you handle.</p>
+<div class="cards3">
+<div class="card reveal"><span class="klabel">Level 1 &middot; Foundational</span><h4>You handle FCI</h4><p>15 basic safeguarding requirements from FAR 52.204-21, met through an annual self-assessment affirmed by a senior official in SPRS.</p></div>
+<div class="card reveal d1"><span class="klabel">Level 2 &middot; Advanced</span><h4>You handle CUI</h4><p>The 110 practices of NIST SP 800-171. Most contracts involving CUI point here, with third-party assessment by a C3PAO on the horizon for many.</p></div>
+<div class="card reveal d2"><span class="klabel">Level 3 &middot; Expert</span><h4>Highest-sensitivity programs</h4><p>Level 2 plus selected enhanced requirements from NIST SP 800-172, assessed by the government rather than a C3PAO.</p></div>
+</div>
+<p style="margin-top:24px;color:#42566F;font-size:15px;"><strong>The catch people miss:</strong> even with no CUI anywhere on your network, handling FCI alone still obligates an annual Level 1 self-assessment with a senior official's affirmation filed in SPRS. Almost nobody in the defense supply chain is fully outside this program.</p>
+</div></section>
+
+
+<!-- ===== WHAT LEVEL 2 REQUIRES ===== -->
+<section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
+<span class="mark on-light">The requirement</span>
+<h2 class="sectitle">What Level 2 actually requires</h2>
+<p class="lead">110 practices, assessed against 320 objectives. One score. Proof, not promises. And all of it applies only to systems inside your assessment scope, which is why everything on this page starts with scope.</p>
+<div class="grid4">
+<div class="card reveal"><span class="klabel">NIST SP 800-171</span><h4>110 practices</h4><p>Security controls across 14 families, decomposed into 320 assessment objectives, implemented, not just written down.</p></div>
+<div class="card reveal d1"><span class="klabel">SPRS</span><h4>Your score, on file</h4><p>A self-assessment score and an annual affirmation posted to the DoD's SPRS.</p></div>
+<div class="card reveal d2"><span class="klabel">SSP + POA&amp;M</span><h4>Documentation</h4><p>A System Security Plan for scoped systems, with open gaps tracked and closed within 180 days.</p></div>
+<div class="card paused reveal d3"><span class="paused-tag">Paused</span><span class="klabel">C3PAO</span><h4>Independently assessed</h4><p>A certified third party assesses the systems that touch CUI every three years. Currently paused by the Department of War.</p></div>
+</div>
+</div></section>
+
+
+
+
+<section class="light light-alt wm-host" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+<span class="wm" aria-hidden="true" style="font-size:260px;right:-40px;bottom:-50px;">&sect;170.19</span>
+<div class="wrap" style="position:relative;">
+<span class="mark on-light">The decision</span>
+<h2 class="sectitle">Four paths to certification</h2>
+<div class="tier reveal"><div class="tier-num">01</div><div class="tier-body"><h4>Re-platform onto a government cloud and run it yourself directly</h4><p>It works, but you are now operating security infrastructure that is not your business, and every device that touches CUI sits inside your assessment.</p></div></div>
+<div class="tier reveal"><div class="tier-num">02</div><div class="tier-body"><h4>Hire an MSP to build and run it for you</h4><p>The MSP stands up a government cloud and virtual desktops, then operates the environment on an ongoing services contract. Most organizations would rather stay in control of their own security posture than outsource it, and the added cost of having the MSP run the environment never stops.</p></div></div>
+<div class="tier reveal"><div class="tier-num">03</div><div class="tier-body"><h4>Bolt on an encrypted email or file tool</h4><p>The moment CUI lands in a mailbox, the mail system and every synced device become CUI Assets assessed against all 110 controls. Easy adoption, enormous assessment.</p></div></div>
+<div class="tier foundation reveal"><div class="tier-num">04</div><div class="tier-body"><h4>RegDOX: the compliant environment, delivered</h4><p>CUI lives inside a secure environment reached through a secure browser that leaves nothing on the device. Endpoints documented Out-of-Scope. You utilize a compliant enclave instead of building, running, and maintaining it.</p><span class="flag">Endpoints out of scope &middot; 32 CFR &sect;170.19</span></div></div>
+</div></section>
+
+<!-- ===== EMAIL TRAP + CONSOLE ===== -->
+
+<!-- ===== THE MECHANISM (data-never-leaves widget) ===== -->
+<style>
+  .widget{max-width:880px;width:100%;border:1px solid rgba(60,198,216,.35);border-radius:12px;background:linear-gradient(172deg,#11304F,#0A1C38 60%,#081527);box-shadow:0 0 0 1px rgba(60,198,216,.10),0 40px 100px rgba(0,0,0,.6),0 0 110px rgba(21,154,172,.14);overflow:hidden;position:relative;}
+  .widget::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(122,150,190,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(122,150,190,.045) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 30%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 85% 75% at 50% 30%,#000 30%,transparent 80%);pointer-events:none;}
+  .whead{position:relative;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line-dark);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8CCE6;}
+  .whead .live{color:var(--ok);display:flex;align-items:center;gap:7px;}
+  .whead .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);animation:wpulse 2.2s infinite;}
+  @keyframes wpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(95,185,138,.45);}50%{opacity:.4;box-shadow:0 0 0 6px rgba(95,185,138,0);}}
+  .widget svg{display:block;width:100%;height:auto;position:relative;}
+
+  /* status readout */
+  .status{position:relative;height:20px;margin:2px 0 6px;}
+  .status span{position:absolute;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-3);opacity:0;animation:wcycle 18s linear infinite;}
+  .status span:nth-child(2){animation-delay:6s;}
+  .status span:nth-child(3){animation-delay:12s;}
+  @keyframes wcycle{0%{opacity:0;}3%,30%{opacity:1;}36%,100%{opacity:0;}}
+  .wfoot{position:relative;text-align:center;font-size:14.5px;color:var(--on-dark-1);padding:0 24px 22px;}
+  .wfoot b{color:#7FE0EE;}
+
+  /* ---- documents orbiting slowly inside the cloud ---- */
+  .orb{animation:worbit 26s linear infinite;}
+  .orb.o2{animation-duration:32s;animation-delay:-11s;}
+  .orb.o3{animation-duration:29s;animation-delay:-20s;}
+  @keyframes worbit{from{offset-distance:0%;}to{offset-distance:100%;}}
+
+  /* ---- boundary: marching inner ring ---- */
+  .ring-march{stroke-dasharray:2 10;animation:wmarch 40s linear infinite;}
+  @keyframes wmarch{to{stroke-dashoffset:-480;}}
+
+  /* ---- session traffic ---- */
+  .frame{animation:wframedown 3.8s cubic-bezier(.4,.1,.6,.9) infinite;}
+  .frame.f2{animation-delay:-1.3s;}
+  .frame.f3{animation-delay:-2.5s;}
+  @keyframes wframedown{0%{offset-distance:0%;opacity:0;}10%{opacity:.9;}85%{opacity:.9;}100%{offset-distance:100%;opacity:0;}}
+  .key{animation:wkeyup 4.6s cubic-bezier(.4,.1,.6,.9) infinite;}
+  .key.k2{animation-delay:-1.8s;}
+  .key.k3{animation-delay:-3.2s;}
+  @keyframes wkeyup{0%{offset-distance:100%;opacity:0;}10%{opacity:1;}85%{opacity:1;}100%{offset-distance:0%;opacity:0;}}
+
+  /* ---- viewer screens: scrolling ghost lines ---- */
+  .scroll{animation:wscroll 7s linear infinite;}
+  @keyframes wscroll{from{transform:translateY(0);}to{transform:translateY(-22px);}}
+
+  /* ---- escape attempt: drift out, dissolve at boundary ---- */
+  .escape{animation:wescape 12s cubic-bezier(.5,0,.6,1) infinite;}
+  .escape *{transform-box:fill-box;transform-origin:center;}
+  .escape .card{animation:wdissolve 12s ease-in-out infinite;}
+  @keyframes wescape{0%,22%{offset-distance:0%;opacity:0;}26%{opacity:1;}44%{offset-distance:100%;}100%{offset-distance:100%;opacity:0;}}
+  @keyframes wdissolve{0%,40%{transform:scale(1);opacity:1;filter:blur(0);}47%{transform:scale(.55);opacity:0;filter:blur(2px);}100%{opacity:0;}}
+  .arcflash{stroke-dasharray:90;stroke-dashoffset:90;animation:warc 12s ease-out infinite;}
+  @keyframes warc{0%,41%{stroke-dashoffset:90;opacity:0;}45%{stroke-dashoffset:0;opacity:.95;}55%{opacity:.95;}64%,100%{stroke-dashoffset:0;opacity:0;}}
+  .btag{opacity:0;animation:wbtag 12s ease-in-out infinite;}
+  @keyframes wbtag{0%,43%{opacity:0;}47%,58%{opacity:1;}66%,100%{opacity:0;}}
+  .ret{animation:wret 12s ease-in infinite;}
+  @keyframes wret{0%,48%{offset-distance:100%;opacity:0;}52%{opacity:.85;}68%{offset-distance:0%;opacity:0;}100%{opacity:0;}}
+  .lane2 .escape,.lane2 .escape .card{animation-delay:-6s;}
+  .lane2 .arcflash,.lane2 .btag,.lane2 .ret{animation-delay:-6s;}
+
+  @media(prefers-reduced-motion:reduce){
+    .orb,.ring-march,.frame,.key,.scroll,.escape,.escape .card,.arcflash,.btag,.ret{animation:none!important;}
+    .escape,.arcflash,.btag,.ret{opacity:0!important;}
+    .status span{animation:none;opacity:0;}
+    .status span:first-child{opacity:1;}
+    .whead .live::before{animation:none;}
+  }
+  .widget{margin:44px auto 0;}
+</style>
+<section class="light">
+  <div class="wrap" style="text-align:center;">
+    <span class="mark on-light" style="justify-content:center;">The mechanism</span>
+    <h2 class="sectitle">See why devices stay out of scope</h2>
+    <p class="lead" style="margin-left:auto;margin-right:auto;">The enclave holds the data and the applications. Devices get a live session: frames down, keystrokes up, and nothing else. Watch what happens when a file tries to leave.</p>
+    <div class="widget">
+  <div class="whead"><span>CCE &middot; The Data Never Leaves</span><span class="live">Live Session</span></div>
+
+  <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" role="img"
+       aria-label="Refined animation: CUI documents orbit inside a cloud enclave protected by an instrument-style boundary. Devices below hold live view-only sessions with frames flowing down and keystrokes flowing up. Documents that drift toward the boundary dissolve against it. Every device is marked out of scope.">
+    <defs>
+      <radialGradient id="haze" cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stop-color="#1B5E86" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#1B5E86" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="sess" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3CC6D8" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#3F6591" stop-opacity=".35"/>
+      </linearGradient>
+      <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <clipPath id="scr1"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+      <clipPath id="scr2"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+      <clipPath id="scr3"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+    </defs>
+
+    <!-- ambient glow behind the enclave -->
+    <ellipse cx="400" cy="140" rx="290" ry="160" fill="url(#haze)"/>
+
+    <!-- ===== session paths ===== -->
+    <g fill="none" stroke="url(#sess)" stroke-width="1.4">
+      <path d="M330,240 C300,300 225,335 175,392"/>
+      <path d="M400,252 C400,300 400,345 400,392"/>
+      <path d="M470,240 C500,300 575,335 625,392"/>
+    </g>
+    <text x="238" y="336" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2" transform="rotate(41 238 336)">SESSION &middot; K&middot;V&middot;M</text>
+    <text x="408" y="336" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2">SESSION &middot; K&middot;V&middot;M</text>
+    <text x="520" y="322" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2" transform="rotate(-41 520 322)">SESSION &middot; K&middot;V&middot;M</text>
+
+    <!-- frames down (view), keys up (input) -->
+    <rect class="frame" width="2.4" height="8" rx="1.2" fill="#7FDCEA" opacity=".9" style="offset-path:path('M330,240 C300,300 225,335 175,392');offset-rotate:auto;"/>
+    <rect class="frame f2" width="2.4" height="8" rx="1.2" fill="#7FDCEA" style="offset-path:path('M400,252 C400,300 400,345 400,392');offset-rotate:auto;"/>
+    <rect class="frame f3" width="2.4" height="8" rx="1.2" fill="#7FDCEA" style="offset-path:path('M470,240 C500,300 575,335 625,392');offset-rotate:auto;"/>
+    <circle class="key" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M330,240 C300,300 225,335 175,392');"/>
+    <circle class="key k2" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M400,252 C400,300 400,345 400,392');"/>
+    <circle class="key k3" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M470,240 C500,300 575,335 625,392');"/>
+
+    <!-- ===== the enclave cloud: layered line-art ===== -->
+    <g>
+      <path d="M262,196 a52,52 0 0 1 26,-92 a70,70 0 0 1 132,-26 a56,56 0 0 1 88,34 a46,46 0 0 1 26,84 z"
+            fill="#0F2C52" stroke="#2E5E8C" stroke-width="1.4"/>
+      <path d="M272,186 a44,44 0 0 1 22,-78 a60,60 0 0 1 113,-22 a48,48 0 0 1 75,29 a38,38 0 0 1 22,71 z"
+            fill="none" stroke="#24507C" stroke-width="1" opacity=".7"/>
+      <!-- orbiting document cards -->
+      <g class="orb" style="offset-path:path('M400,120 a60,26 0 1 1 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#159AAC"/><path d="M20,0 h8 v8 z" fill="#0E7482"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <g class="orb o2" style="offset-path:path('M400,132 a86,34 0 1 0 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#127E92"/><path d="M20,0 h8 v8 z" fill="#0C5E6E"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <g class="orb o3" style="offset-path:path('M400,112 a38,42 0 1 1 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#1B6E80"/><path d="M20,0 h8 v8 z" fill="#145260"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <text x="400" y="212" text-anchor="middle" fill="#7FE0EE" font-family="'IBM Plex Mono',monospace" font-size="9.5" letter-spacing="2.5">CUI LIVES HERE</text>
+    </g>
+
+    <!-- ===== boundary instrument: double ring + reticle brackets ===== -->
+    <ellipse cx="400" cy="142" rx="238" ry="122" fill="none" stroke="#3CC6D8" stroke-width="1" opacity=".25"/>
+    <ellipse class="ring-march" cx="400" cy="142" rx="232" ry="117" fill="none" stroke="#3CC6D8" stroke-width="1.6" opacity=".8"/>
+    <g stroke="#3CC6D8" stroke-width="2.5" fill="none" filter="url(#glow)">
+      <path d="M392,20 h-14 M400,25 v0"/><path d="M408,20 h14"/>
+      <path d="M162,130 v14"/><path d="M638,130 v14"/>
+      <path d="M392,264 h-14"/><path d="M408,264 h14"/>
+    </g>
+    <rect x="336" y="8" width="128" height="19" rx="9.5" fill="#0E2A4E" stroke="rgba(60,198,216,.6)"/>
+    <text x="400" y="21" text-anchor="middle" fill="#7FE0EE" font-family="'IBM Plex Mono',monospace" font-size="9" font-weight="600" letter-spacing="2">CUI BOUNDARY</text>
+
+    <!-- ===== escape attempts: drift out, dissolve at the wall ===== -->
+    <g class="lane1">
+      <g class="escape" style="offset-path:path('M372,168 C350,205 325,235 297,262');offset-rotate:0deg;">
+        <g class="card" transform="translate(-11,-14)">
+          <rect width="22" height="28" rx="2" fill="#E2705F"/>
+          <line x1="4" y1="9" x2="18" y2="9" stroke="#fff" stroke-width="1.4"/>
+          <line x1="4" y1="14" x2="18" y2="14" stroke="#FBD9D2" stroke-width="1.4"/>
+          <line x1="4" y1="19" x2="13" y2="19" stroke="#FBD9D2" stroke-width="1.4"/>
+        </g>
+      </g>
+      <path class="arcflash" d="M262,290 A232,117 0 0 1 336,248" fill="none" stroke="#E2705F" stroke-width="2.5" filter="url(#glow)"/>
+      <g class="btag"><rect x="216" y="286" width="62" height="17" rx="8.5" fill="#C24A3C"/><text x="247" y="298" text-anchor="middle" fill="#fff" font-family="'IBM Plex Mono',monospace" font-size="8" font-weight="600" letter-spacing="1.5">BLOCKED</text></g>
+      <circle class="ret" r="1.8" fill="#F0A794" style="offset-path:path('M372,168 C350,205 325,235 297,262');"/>
+      <circle class="ret" r="1.3" fill="#F0A794" style="offset-path:path('M366,176 C346,210 322,240 300,258');animation-delay:.25s;"/>
+    </g>
+    <g class="lane2">
+      <g class="escape" style="offset-path:path('M432,168 C455,205 478,235 505,262');offset-rotate:0deg;">
+        <g class="card" transform="translate(-11,-14)">
+          <rect width="22" height="28" rx="2" fill="#E2705F"/>
+          <line x1="4" y1="9" x2="18" y2="9" stroke="#fff" stroke-width="1.4"/>
+          <line x1="4" y1="14" x2="18" y2="14" stroke="#FBD9D2" stroke-width="1.4"/>
+          <line x1="4" y1="19" x2="13" y2="19" stroke="#FBD9D2" stroke-width="1.4"/>
+        </g>
+      </g>
+      <path class="arcflash" d="M466,248 A232,117 0 0 1 540,290" fill="none" stroke="#E2705F" stroke-width="2.5" filter="url(#glow)"/>
+      <g class="btag"><rect x="524" y="286" width="62" height="17" rx="8.5" fill="#C24A3C"/><text x="555" y="298" text-anchor="middle" fill="#fff" font-family="'IBM Plex Mono',monospace" font-size="8" font-weight="600" letter-spacing="1.5">BLOCKED</text></g>
+      <circle class="ret" r="1.8" fill="#F0A794" style="offset-path:path('M432,168 C455,205 478,235 505,262');"/>
+    </g>
+
+    <!-- ===== devices: view-only screens ===== -->
+    <g font-family="'IBM Plex Mono',monospace">
+      <g transform="translate(115,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr1)"><g class="scroll" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="88" y2="30"/><line x1="30" y1="36" x2="80" y2="36"/><line x1="30" y1="42" x2="86" y2="42"/><line x1="30" y1="48" x2="74" y2="48"/><line x1="30" y1="54" x2="88" y2="54"/><line x1="30" y1="60" x2="80" y2="60"/><line x1="30" y1="66" x2="84" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">OFFICE PC</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+      <g transform="translate(340,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr2)"><g class="scroll" style="animation-delay:-2.4s" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="86" y2="30"/><line x1="30" y1="36" x2="78" y2="36"/><line x1="30" y1="42" x2="88" y2="42"/><line x1="30" y1="48" x2="76" y2="48"/><line x1="30" y1="54" x2="84" y2="54"/><line x1="30" y1="60" x2="88" y2="60"/><line x1="30" y1="66" x2="78" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">REMOTE LAPTOP</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+      <g transform="translate(565,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr3)"><g class="scroll" style="animation-delay:-4.6s" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="84" y2="30"/><line x1="30" y1="36" x2="88" y2="36"/><line x1="30" y1="42" x2="76" y2="42"/><line x1="30" y1="48" x2="86" y2="48"/><line x1="30" y1="54" x2="78" y2="54"/><line x1="30" y1="60" x2="86" y2="60"/><line x1="30" y1="66" x2="80" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">BYOD</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+    </g>
+  </svg>
+
+  <div class="status">
+    <span>Session encrypted &middot; FIPS 140-3 validated cryptography</span>
+    <span>0 bytes at rest on any endpoint</span>
+    <span>Every event written to the immutable audit trail</span>
+  </div>
+  <div class="wfoot">Your people see the work. <b>The data never leaves.</b></div>
+</div>
+  </div>
+</section>
+
+<section class="fear wm-host">
+  <div class="glow"></div>
+  <span class="wm" aria-hidden="true" style="font-size:340px;left:-30px;bottom:-80px;">CUI</span>
+  <div class="wrap">
+    <span class="mark">Where assessments fall apart</span>
+    <h2 class="sectitle">One controlled email puts your whole mail stack in scope.</h2>
+    <div class="fear-grid">
+      <div class="fear-body reveal">
+        <p>Scope diagrams obsess over file shares and ERP systems, then wave email through as "just communication." That assumption is where assessments quietly fall apart. <strong>The instant CUI reaches a mailbox, the inbox, the platform behind it, and every account that sends or receives the data are in scope.</strong></p>
+        <p>Encrypted email does not escape this. It relocates it. Encryption is a confidentiality control, not a scope-reduction mechanism. A mailbox that holds CUI still stores and transmits CUI, and in the sync model, so does every endpoint the tool touches.</p>
+        <p><strong>The only way to keep email out of scope is to keep CUI out of email.</strong> In the CCE model, CUI lives in the enclave and never lands in a mailbox. The lockdown that keeps it there isn't a project you assemble and defend. It's the engineered default, running on the right.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="bridge">Your CUI stays put. Your people come to it.</div>
+        <div class="panel">
+          <div class="phead"><span>CCE Session &middot; Enclave</span><span class="live">Live</span></div>
+          <div class="feed" id="feed" aria-hidden="true"></div>
+        </div>
+        <p class="panel-cap">Nothing lands on the device. Everything lands in the audit trail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="light"><div class="wrap">
+<span class="mark on-light">One product suite</span>
+<h2 class="sectitle">The CMMC Solution</h2>
+<div class="cards3" style="grid-template-columns:1fr 1fr;max-width:900px;margin-left:auto;margin-right:auto;">
+<div class="card reveal"><span class="klabel">Secure Data Room</span><h4>Protect, control, and track CUI</h4><p>A purpose-built CUI repository: end-to-end encryption, MFA, secure viewer with watermarking, and tamper-proof audit trails. Maps directly to 85+ NIST SP 800-171 controls, supports DFARS 7019 reporting, and improves your SPRS score.</p><a class="go" href="product-sdr.html">Explore SDR <span>&rarr;</span></a></div>
+<div class="card reveal d1"><span class="klabel">Compliant Cloud Enclave</span><h4>Data, applications, and teams in one boundary</h4><p>A secure virtual workspace where users, applications, and CUI operate together inside a single compliant boundary. Work on Office documents, CAD files, and databases in the cloud, with your endpoints documented Out-of-Scope.</p><a class="go" href="product-cce.html">Explore CCE <span>&rarr;</span></a></div>
+</div>
+</div></section>
+
+
+
+
+<!-- ===== WHAT YOU GET ===== -->
+<section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <span class="mark on-light">What you get</span>
+    <h2 class="sectitle">What you get with the CCE</h2>
+    <p class="lead">Not a toolkit and a to-do list. A working enclave with most of the assessment already carried.</p>
+    <div class="cards3">
+      <div class="card reveal" style="background:var(--ink);border-color:var(--ink);">
+        <span class="klabel">Inheritance</span>
+        <div style="font-family:var(--font-display);font-weight:900;font-size:52px;letter-spacing:-0.03em;color:var(--accent-bright);line-height:1;margin-top:12px;">96%</div>
+        <h4 style="color:#fff;">of assessment objectives inherited</h4>
+        <p style="color:var(--on-dark-1);">308 of 320 NIST SP 800-171A assessment objectives are addressed in RegDOX compliance documentation, ready for your SSP on day one.</p>
+      </div>
+      <div class="card reveal d1">
+        <span class="klabel">Speed</span>
+        <h4>Live in days, productive in weeks</h4>
+        <p>The enclave and Secure Data Room provision within 3 business days of signature, live training included. Most teams are uploading and working within 1 to 2 weeks.</p>
+      </div>
+      <div class="card reveal d2">
+        <span class="klabel">Scope</span>
+        <h4>Reduced assessment scope</h4>
+        <p>CUI never touches your corporate network or devices, so endpoints are documented Out-of-Scope under 32 CFR &sect;170.19 and your boundary collapses to the enclave.</p>
+      </div>
+      <div class="card reveal">
+        <span class="klabel">Controls</span>
+        <h4>Technical controls, handled</h4>
+        <p>Encrypted storage, MFA, immutable audit logging, watermarked viewing, and downloads, clipboard, and printing blocked by engineered default.</p>
+      </div>
+      <div class="card reveal d1">
+        <span class="klabel">Support</span>
+        <h4>Expert support, three sizes</h4>
+        <p>A Registered Practitioner, proven templates, and SSP support at whatever depth you want, from a sanity check to an end-to-end partnership.</p>
+      </div>
+      <div class="card reveal d2">
+        <span class="klabel">Proof</span>
+        <h4>Proven in formal assessment</h4>
+        <p>Dozens of defense industrial contractors rely on RegDOX. The enclave approach has carried them through formal CMMC Level 2 assessments, with the boundary independently confirmed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== VALIDATED NOT ASSERTED ===== -->
+<section class="light"><div class="wrap">
+<span class="mark on-light">Validated, not asserted</span>
+<h2 class="sectitle">The security standards any vendor should meet</h2>
+<p class="lead">Grounded in regulation, confirmed by third parties, and proven in the field. Here is ours. Ask your other candidates for the same.</p>
+<div class="vgrid">
+<div class="vchip reveal"><div class="t">FedRAMP Moderate Equivalency</div><div class="s">Independently attested</div></div>
+<div class="vchip reveal d1"><div class="t">ISO 27001 Certified</div><div class="s">Independently audited security management</div></div>
+<div class="vchip reveal d2"><div class="t">FIPS 140-3 Validated Cryptography</div><div class="s">Encryption at rest and in transit</div></div>
+<div class="vchip reveal"><div class="t">CMMC L2 Certified Customers</div><div class="s">Certified on this exact model</div></div>
+<div class="vchip reveal d1"><div class="t">Patented Technology</div><div class="s">The enclave architecture</div></div>
+<div class="vchip reveal d2"><div class="t">AWS GovCloud &middot; Since 2007</div><div class="s">US-hosted, built for regulated compliance</div></div>
+</div>
+</div></section>
+
+<section class="light"><div class="wrap">
+<span class="mark on-light">Straight answers</span>
+<h2 class="sectitle">CMMC questions we hear every week</h2>
+<div class="faq">
+<details><summary>Does using RegDOX make us CMMC certified?</summary><p>No vendor can sell you certification. What the platform does is collapse your assessment boundary and carry a large share of the control burden, while our Audit &amp; Assessment team supports your SSP and drives you toward a passing assessment.</p></details>
+<details><summary>Do our laptops really stay out of scope?</summary><p>When CUI never reaches the endpoint, the endpoint can be documented Out-of-Scope under 32 CFR &sect;170.19. That is the engineered default of the enclave model.</p></details>
+<details><summary>What happens to our existing Microsoft 365 or Google?</summary><p>Nothing. The environment sits alongside your current systems. Your commercial tenant, your workflows, and your email stay exactly where they are, and stay out of scope because CUI never enters them.</p></details>
+<details><summary>How fast can we be assessment-ready?</summary><p>The environment provisions on your timeline rather than an infrastructure project's. The pacing item is usually your documentation and process work, which is what our Audit &amp; Assessment team helps carry.</p></details>
+</div>
+</div></section>
+
+
+
+<section class="convert"><div class="glow"></div><div class="wrap">
+<span class="mark">Next step</span><h2>Start with a readiness review.</h2><p>Bring your contract clauses and your current scope diagram. We will show you exactly what falls away in the enclave model.</p>
+<div class="ctas"><a class="btn btn-ghost" href="https://forms.zohopublic.com/regdoxsolutionsinc/form/ScheduleYourCMMCAssessmentReadinessReview/formperma/iyKpr9qXz40PfYLqJkJyxG6W_-NL2nOaokR1BEM0vac">Talk to an Expert <span class="arrow">&rarr;</span></a></div>
+<a class="phone" href="tel:800-517-3171">(800) 517-3171 &middot; Nashua, NH &middot; U.S. data centers &amp; personnel</a>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html" style="margin-bottom:18px;"><span class="dot"></span>RegDOX</a>
+        <p style="color:var(--on-dark-2);font-size:14px;line-height:1.6;margin-top:14px;">RegDOX Solutions Inc.<br>1 Elm Street, Suite 201<br>Nashua, NH 03060<br><a href="tel:800-517-3171" style="color:var(--on-dark-1);text-decoration:none;">(800) 517-3171</a></p>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <a href="product-cce.html">Compliant Cloud Enclave</a>
+        <a href="product-sdr.html">Secure Data Room</a>
+        <a href="https://www.regdox.com/regdox-cloud-products/dr-connect/">DR Connect</a>
+        <a href="https://www.regdox.com/regdox-cloud-products/sequester/">Sequester</a>
+        <a href="https://www.regdox.com/regdox-cloud-products/long-term-cloud-storage-solutions/">Long-Term Cloud Storage</a>
+      </div>
+      <div>
+        <h5>Compliance</h5>
+        <a href="cmmc-solutions.html">CMMC Solutions</a>
+        <a href="itar-solutions.html">ITAR Solutions</a>
+        <a href="https://www.regdox.com/compliance-use-cases/dfars-solutions/">DFARS Solutions</a>
+        <a href="https://www.regdox.com/compliance-use-cases/ear-solutions/">EAR Solutions</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="resources.html">Resources</a>
+        <a href="https://www.regdox.com/resources/support/">Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>RegDOX is a registered trademark of RegDOX Solutions Inc. &copy;2007-2026 RegDOX Solutions Inc. All rights reserved.</span>
+      <span><a href="https://www.regdox.com/privacy-policy/">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://www.regdox.com/sitemap">Sitemap</a> &nbsp;&middot;&nbsp; <a href="https://www.regdox.com/accessibility">Accessibility</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // blog ticker: baked-in headlines render immediately; the WP REST API
+  // replaces them with live posts when reachable (same-origin once deployed)
+  (function(){
+    var ticker=document.getElementById('ticker');
+    var track=document.getElementById('ticker-track');
+    if(!ticker||!track)return;
+    var baseHTML=track.innerHTML;
+    function loop(){
+      if(!reduced){track.innerHTML+=track.innerHTML;}
+    }
+    loop();
+    function decode(html){
+      var t=document.createElement('textarea');
+      t.innerHTML=html;
+      return t.value;
+    }
+    fetch('https://www.regdox.com/wp-json/wp/v2/posts?per_page=3&_fields=title,link,date')
+      .then(function(r){if(!r.ok)throw new Error('bad status');return r.json();})
+      .then(function(posts){
+        if(!posts||!posts.length)return;
+        var frag=document.createDocumentFragment();
+        posts.forEach(function(p){
+          var a=document.createElement('a');
+          a.href=p.link;
+          var d=new Date(p.date);
+          var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          var ds=document.createElement('span');
+          ds.className='tdate';
+          ds.textContent=months[d.getMonth()]+' '+d.getDate();
+          a.appendChild(ds);
+          a.appendChild(document.createTextNode(decode(p.title.rendered)));
+          frag.appendChild(a);
+        });
+        track.innerHTML='';
+        track.appendChild(frag);
+        loop();
+      })
+      .catch(function(){/* API unreachable: baked-in headlines remain */});
+  })();
+
+  // marquee: duplicate content for seamless loop
+  var mq=document.getElementById('marquee');
+  if(mq){mq.innerHTML+=mq.innerHTML;}
+
+  // scroll reveal
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  }else{
+    els.forEach(function(el){el.classList.add('in');});
+  }
+
+  // count-up stats
+  function countUp(node){
+    var target=parseInt(node.getAttribute('data-target'),10);
+    if(reduced||target===0){node.textContent=target;return;}
+    var start=null,dur=1200;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      node.textContent=Math.round(target*(1-Math.pow(1-p,3)));
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counts=document.querySelectorAll('.countup');
+  if('IntersectionObserver' in window){
+    var cio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});
+    },{threshold:.4});
+    counts.forEach(function(c){cio.observe(c);});
+  }else{
+    counts.forEach(function(c){c.textContent=c.getAttribute('data-target');});
+  }
+
+  // interactive scope demo
+  var demo=document.getElementById('demo');
+  var bW=document.getElementById('btn-without');
+  var bC=document.getElementById('btn-with');
+  var count=document.getElementById('assetcount');
+  var label=document.getElementById('assetlabel');
+  var note=document.getElementById('stagenote');
+  var encNm=document.getElementById('enclave-nm');
+  var encSt=document.getElementById('enclave-st');
+  function animateCount(from,to){
+    if(reduced){count.textContent=to;return;}
+    var start=null,dur=700;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      count.textContent=Math.round(from+(to-from)*(1-Math.pow(1-p,3)));
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  // fit the scope reticle around the actual content
+  function fitBoundary(animate){
+    if(!demo)return;
+    var stage=demo.querySelector('.stage');
+    var grid=demo.querySelector('.stage-grid');
+    var enc=demo.querySelector('.enclave');
+    var boundary=demo.querySelector('.boundary');
+    if(!stage||!grid||!enc||!boundary)return;
+    var cce=demo.classList.contains('cce');
+    var sr=stage.getBoundingClientRect();
+    var tr=(cce?enc:grid).getBoundingClientRect();
+    var pad=cce?12:20;
+    if(animate===false){boundary.style.transition='none';}
+    boundary.style.top=(tr.top-sr.top-pad)+'px';
+    boundary.style.left=(tr.left-sr.left-pad)+'px';
+    boundary.style.width=(tr.width+pad*2)+'px';
+    boundary.style.height=(tr.height+pad*2)+'px';
+    if(animate===false){
+      // force reflow, then restore the transition
+      void boundary.offsetWidth;
+      boundary.style.transition='';
+    }
+  }
+  window.addEventListener('resize',function(){fitBoundary(false);});
+  window.addEventListener('load',function(){fitBoundary(false);});
+  fitBoundary(false);
+
+  function setState(cce){
+    if(!demo)return;
+    var was=demo.classList.contains('cce');
+    if(was===cce)return;
+    demo.classList.toggle('cce',cce);
+    bW.classList.toggle('active',!cce);
+    bC.classList.toggle('active',cce);
+    bW.setAttribute('aria-pressed',String(!cce));
+    bC.setAttribute('aria-pressed',String(cce));
+    var blabel=document.getElementById('blabel');
+    var chipStates=demo.querySelectorAll('.dchip .st');
+    var stSupply=document.getElementById('st-supply2');
+    if(cce){
+      animateCount(6,1);
+      label.textContent='Component: one secured web environment on AWS GovCloud';
+      note.innerHTML='Endpoints out of scope, like any enclave. <b>The difference is everything you did not have to build, license, or pay someone to run.</b>';
+      encNm.textContent='RegDOX CCE';
+      encSt.textContent='AWS GovCloud \u00B7 one secured web session \u00B7 yours to run';
+      if(blabel)blabel.textContent='Your Enclave Stack \u00B7 1 Component';
+      chipStates.forEach(function(s){s.textContent='Not Needed';});
+      if(stSupply)stSupply.textContent='Not Needed \u00B7 DR Connect instead';
+    }else{
+      animateCount(1,6);
+      label.textContent='Components to license, harden, and administer \u00B7 with the MSP meter running on all of it';
+      note.innerHTML='Every piece is licensed, secured, and administered. <b>Toggle to see the RegDOX build.</b>';
+      encNm.textContent='MSP-Built Enclave';
+      encSt.textContent='GCC High + VDI stack \u00B7 assembled for you, billed to you';
+      if(blabel)blabel.textContent='Your Enclave Stack \u00B7 6 Components';
+      chipStates.forEach(function(s){s.textContent='Required';});
+    }
+    fitBoundary(true);
+  }
+  if(bW&&bC){
+    bW.addEventListener('click',function(){setState(false);});
+    bC.addEventListener('click',function(){setState(true);});
+    // auto-demo once after load to draw the eye, then return
+    if(!reduced){
+      setTimeout(function(){setState(true);},2600);
+      setTimeout(function(){setState(false);},5200);
+    }
+  }
+
+  // rotating headline: ITAR / CMMC / Compliance, 3s per word
+  (function(){
+    var words=document.querySelectorAll('.rot-word');
+    if(!words.length)return;
+    if(reduced){
+      words.forEach(function(w,i){w.classList.toggle('active',i===words.length-1);});
+      return;
+    }
+    var idx=0;
+    setInterval(function(){
+      var cur=words[idx];
+      idx=(idx+1)%words.length;
+      var nxt=words[idx];
+      cur.classList.remove('active');cur.classList.add('leaving');
+      setTimeout(function(){cur.classList.remove('leaving');},500);
+      nxt.classList.add('active');
+    },3000);
+  })();
+
+  // card cursor glow
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+
+  // live enclave console
+  var feed=document.getElementById('feed');
+  if(!feed) return;
+  var lines=[
+    {op:'open',    ob:'drawing_rev-C.pdf \u00B7 enclave viewer',      st:'ok',  lab:'OK'},
+    {op:'edit',    ob:'spec_7841.docx \u00B7 in-enclave',             st:'ok',  lab:'OK'},
+    {op:'download',ob:'attempt \u2192 local endpoint',                st:'blk', lab:'BLOCKED'},
+    {op:'clipboard',ob:'copy attempt \u2192 host OS',                 st:'blk', lab:'BLOCKED'},
+    {op:'share',   ob:'DR Connect link \u00B7 external reviewer',     st:'ok',  lab:'OK'},
+    {op:'print',   ob:'redirect attempt \u2192 local printer',        st:'blk', lab:'BLOCKED'},
+    {op:'audit',   ob:'entry written \u00B7 immutable trail',         st:'ok',  lab:'OK'}
+  ];
+  var i=0;
+  function ts(){
+    var d=new Date();
+    function p(n){return (n<10?'0':'')+n;}
+    return p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+  }
+  function add(){
+    var l=lines[i%lines.length];i++;
+    var div=document.createElement('div');
+    div.className='ln';
+    div.innerHTML='<span class="t">'+ts()+'</span><span class="op">'+l.op+'</span><span class="ob">'+l.ob+'</span><span class="'+l.st+'">'+l.lab+'</span>';
+    feed.insertBefore(div,feed.firstChild);
+    while(feed.children.length>7){feed.removeChild(feed.lastChild);}
+  }
+  for(var k=0;k<6;k++){add();}
+  if(!reduced){setInterval(add,2600);}
+})();
+</script>
+</body>
+</html>

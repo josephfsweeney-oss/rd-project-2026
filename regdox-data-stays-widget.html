@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RegDOX | The Data Never Leaves</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1628; --line-dark:#27406A;
+    --accent:#159AAC; --accent-bright:#3CC6D8;
+    --ok:#5FB98A; --warn:#C24A3C; --warn-bright:#E2705F;
+    --on-dark-1:#C7D2E2; --on-dark-2:#9DB0CE; --on-dark-3:#5E769A;
+    --mono:'IBM Plex Mono',monospace; --disp:'Archivo',sans-serif; --body:'IBM Plex Sans',sans-serif;
+  }
+  body{margin:0;background:var(--ink);font-family:var(--body);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:32px;box-sizing:border-box;}
+  .widget{max-width:880px;width:100%;border:1px solid rgba(60,198,216,.35);border-radius:12px;background:linear-gradient(172deg,#11304F,#0A1C38 60%,#081527);box-shadow:0 0 0 1px rgba(60,198,216,.10),0 40px 100px rgba(0,0,0,.6),0 0 110px rgba(21,154,172,.14);overflow:hidden;position:relative;}
+  .widget::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(122,150,190,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(122,150,190,.045) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 30%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 85% 75% at 50% 30%,#000 30%,transparent 80%);pointer-events:none;}
+  .whead{position:relative;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line-dark);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8CCE6;}
+  .whead .live{color:var(--ok);display:flex;align-items:center;gap:7px;}
+  .whead .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(95,185,138,.45);}50%{opacity:.4;box-shadow:0 0 0 6px rgba(95,185,138,0);}}
+  svg{display:block;width:100%;height:auto;position:relative;}
+
+  /* status readout */
+  .status{position:relative;height:20px;margin:2px 0 6px;}
+  .status span{position:absolute;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-3);opacity:0;animation:cycle 18s linear infinite;}
+  .status span:nth-child(2){animation-delay:6s;}
+  .status span:nth-child(3){animation-delay:12s;}
+  @keyframes cycle{0%{opacity:0;}3%,30%{opacity:1;}36%,100%{opacity:0;}}
+  .wfoot{position:relative;text-align:center;font-size:14.5px;color:var(--on-dark-1);padding:0 24px 22px;}
+  .wfoot b{color:#7FE0EE;}
+
+  /* ---- documents orbiting slowly inside the cloud ---- */
+  .orb{animation:orbit 26s linear infinite;}
+  .orb.o2{animation-duration:32s;animation-delay:-11s;}
+  .orb.o3{animation-duration:29s;animation-delay:-20s;}
+  @keyframes orbit{from{offset-distance:0%;}to{offset-distance:100%;}}
+
+  /* ---- boundary: marching inner ring ---- */
+  .ring-march{stroke-dasharray:2 10;animation:march 40s linear infinite;}
+  @keyframes march{to{stroke-dashoffset:-480;}}
+
+  /* ---- session traffic ---- */
+  .frame{animation:framedown 3.8s cubic-bezier(.4,.1,.6,.9) infinite;}
+  .frame.f2{animation-delay:-1.3s;}
+  .frame.f3{animation-delay:-2.5s;}
+  @keyframes framedown{0%{offset-distance:0%;opacity:0;}10%{opacity:.9;}85%{opacity:.9;}100%{offset-distance:100%;opacity:0;}}
+  .key{animation:keyup 4.6s cubic-bezier(.4,.1,.6,.9) infinite;}
+  .key.k2{animation-delay:-1.8s;}
+  .key.k3{animation-delay:-3.2s;}
+  @keyframes keyup{0%{offset-distance:100%;opacity:0;}10%{opacity:1;}85%{opacity:1;}100%{offset-distance:0%;opacity:0;}}
+
+  /* ---- viewer screens: scrolling ghost lines ---- */
+  .scroll{animation:scroll 7s linear infinite;}
+  @keyframes scroll{from{transform:translateY(0);}to{transform:translateY(-22px);}}
+
+  /* ---- escape attempt: drift out, dissolve at boundary ---- */
+  .escape{animation:escape 12s cubic-bezier(.5,0,.6,1) infinite;}
+  .escape *{transform-box:fill-box;transform-origin:center;}
+  .escape .card{animation:dissolve 12s ease-in-out infinite;}
+  @keyframes escape{0%,22%{offset-distance:0%;opacity:0;}26%{opacity:1;}44%{offset-distance:100%;}100%{offset-distance:100%;opacity:0;}}
+  @keyframes dissolve{0%,40%{transform:scale(1);opacity:1;filter:blur(0);}47%{transform:scale(.55);opacity:0;filter:blur(2px);}100%{opacity:0;}}
+  .arcflash{stroke-dasharray:90;stroke-dashoffset:90;animation:arc 12s ease-out infinite;}
+  @keyframes arc{0%,41%{stroke-dashoffset:90;opacity:0;}45%{stroke-dashoffset:0;opacity:.95;}55%{opacity:.95;}64%,100%{stroke-dashoffset:0;opacity:0;}}
+  .btag{opacity:0;animation:btag 12s ease-in-out infinite;}
+  @keyframes btag{0%,43%{opacity:0;}47%,58%{opacity:1;}66%,100%{opacity:0;}}
+  .ret{animation:ret 12s ease-in infinite;}
+  @keyframes ret{0%,48%{offset-distance:100%;opacity:0;}52%{opacity:.85;}68%{offset-distance:0%;opacity:0;}100%{opacity:0;}}
+  .lane2 .escape,.lane2 .escape .card{animation-delay:-6s;}
+  .lane2 .arcflash,.lane2 .btag,.lane2 .ret{animation-delay:-6s;}
+
+  @media(prefers-reduced-motion:reduce){
+    .orb,.ring-march,.frame,.key,.scroll,.escape,.escape .card,.arcflash,.btag,.ret{animation:none!important;}
+    .escape,.arcflash,.btag,.ret{opacity:0!important;}
+    .status span{animation:none;opacity:0;}
+    .status span:first-child{opacity:1;}
+    .whead .live::before{animation:none;}
+  }
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="whead"><span>CCE &middot; The Data Never Leaves</span><span class="live">Live Session</span></div>
+
+  <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" role="img"
+       aria-label="Refined animation: CUI documents orbit inside a cloud enclave protected by an instrument-style boundary. Devices below hold live view-only sessions with frames flowing down and keystrokes flowing up. Documents that drift toward the boundary dissolve against it. Every device is marked out of scope.">
+    <defs>
+      <radialGradient id="haze" cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stop-color="#1B5E86" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#1B5E86" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="sess" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3CC6D8" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#3F6591" stop-opacity=".35"/>
+      </linearGradient>
+      <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <clipPath id="scr1"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+      <clipPath id="scr2"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+      <clipPath id="scr3"><rect x="24" y="16" width="72" height="34" rx="2"/></clipPath>
+    </defs>
+
+    <!-- ambient glow behind the enclave -->
+    <ellipse cx="400" cy="140" rx="290" ry="160" fill="url(#haze)"/>
+
+    <!-- ===== session paths ===== -->
+    <g fill="none" stroke="url(#sess)" stroke-width="1.4">
+      <path d="M330,240 C300,300 225,335 175,392"/>
+      <path d="M400,252 C400,300 400,345 400,392"/>
+      <path d="M470,240 C500,300 575,335 625,392"/>
+    </g>
+    <text x="238" y="336" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2" transform="rotate(41 238 336)">SESSION &middot; K&middot;V&middot;M</text>
+    <text x="408" y="336" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2">SESSION &middot; K&middot;V&middot;M</text>
+    <text x="520" y="322" fill="#5E769A" font-family="'IBM Plex Mono',monospace" font-size="8" letter-spacing="2" transform="rotate(-41 520 322)">SESSION &middot; K&middot;V&middot;M</text>
+
+    <!-- frames down (view), keys up (input) -->
+    <rect class="frame" width="2.4" height="8" rx="1.2" fill="#7FDCEA" opacity=".9" style="offset-path:path('M330,240 C300,300 225,335 175,392');offset-rotate:auto;"/>
+    <rect class="frame f2" width="2.4" height="8" rx="1.2" fill="#7FDCEA" style="offset-path:path('M400,252 C400,300 400,345 400,392');offset-rotate:auto;"/>
+    <rect class="frame f3" width="2.4" height="8" rx="1.2" fill="#7FDCEA" style="offset-path:path('M470,240 C500,300 575,335 625,392');offset-rotate:auto;"/>
+    <circle class="key" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M330,240 C300,300 225,335 175,392');"/>
+    <circle class="key k2" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M400,252 C400,300 400,345 400,392');"/>
+    <circle class="key k3" r="2" fill="#3CC6D8" filter="url(#glow)" style="offset-path:path('M470,240 C500,300 575,335 625,392');"/>
+
+    <!-- ===== the enclave cloud: layered line-art ===== -->
+    <g>
+      <path d="M262,196 a52,52 0 0 1 26,-92 a70,70 0 0 1 132,-26 a56,56 0 0 1 88,34 a46,46 0 0 1 26,84 z"
+            fill="#0F2C52" stroke="#2E5E8C" stroke-width="1.4"/>
+      <path d="M272,186 a44,44 0 0 1 22,-78 a60,60 0 0 1 113,-22 a48,48 0 0 1 75,29 a38,38 0 0 1 22,71 z"
+            fill="none" stroke="#24507C" stroke-width="1" opacity=".7"/>
+      <!-- orbiting document cards -->
+      <g class="orb" style="offset-path:path('M400,120 a60,26 0 1 1 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#159AAC"/><path d="M20,0 h8 v8 z" fill="#0E7482"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <g class="orb o2" style="offset-path:path('M400,132 a86,34 0 1 0 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#127E92"/><path d="M20,0 h8 v8 z" fill="#0C5E6E"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <g class="orb o3" style="offset-path:path('M400,112 a38,42 0 1 1 -0.1,0');offset-rotate:0deg;">
+        <g transform="translate(-14,-18)">
+          <rect width="28" height="36" rx="2.5" fill="#1B6E80"/><path d="M20,0 h8 v8 z" fill="#145260"/>
+          <line x1="5" y1="12" x2="23" y2="12" stroke="#EAFBFE" stroke-width="1.6"/>
+          <line x1="5" y1="18" x2="23" y2="18" stroke="#AEE9F2" stroke-width="1.6"/>
+          <line x1="5" y1="24" x2="17" y2="24" stroke="#AEE9F2" stroke-width="1.6"/>
+        </g>
+      </g>
+      <text x="400" y="212" text-anchor="middle" fill="#7FE0EE" font-family="'IBM Plex Mono',monospace" font-size="9.5" letter-spacing="2.5">CUI LIVES HERE</text>
+    </g>
+
+    <!-- ===== boundary instrument: double ring + reticle brackets ===== -->
+    <ellipse cx="400" cy="142" rx="238" ry="122" fill="none" stroke="#3CC6D8" stroke-width="1" opacity=".25"/>
+    <ellipse class="ring-march" cx="400" cy="142" rx="232" ry="117" fill="none" stroke="#3CC6D8" stroke-width="1.6" opacity=".8"/>
+    <g stroke="#3CC6D8" stroke-width="2.5" fill="none" filter="url(#glow)">
+      <path d="M392,20 h-14 M400,25 v0"/><path d="M408,20 h14"/>
+      <path d="M162,130 v14"/><path d="M638,130 v14"/>
+      <path d="M392,264 h-14"/><path d="M408,264 h14"/>
+    </g>
+    <rect x="336" y="8" width="128" height="19" rx="9.5" fill="#0E2A4E" stroke="rgba(60,198,216,.6)"/>
+    <text x="400" y="21" text-anchor="middle" fill="#7FE0EE" font-family="'IBM Plex Mono',monospace" font-size="9" font-weight="600" letter-spacing="2">CUI BOUNDARY</text>
+
+    <!-- ===== escape attempts: drift out, dissolve at the wall ===== -->
+    <g class="lane1">
+      <g class="escape" style="offset-path:path('M372,168 C350,205 325,235 297,262');offset-rotate:0deg;">
+        <g class="card" transform="translate(-11,-14)">
+          <rect width="22" height="28" rx="2" fill="#E2705F"/>
+          <line x1="4" y1="9" x2="18" y2="9" stroke="#fff" stroke-width="1.4"/>
+          <line x1="4" y1="14" x2="18" y2="14" stroke="#FBD9D2" stroke-width="1.4"/>
+          <line x1="4" y1="19" x2="13" y2="19" stroke="#FBD9D2" stroke-width="1.4"/>
+        </g>
+      </g>
+      <path class="arcflash" d="M262,290 A232,117 0 0 1 336,248" fill="none" stroke="#E2705F" stroke-width="2.5" filter="url(#glow)"/>
+      <g class="btag"><rect x="216" y="286" width="62" height="17" rx="8.5" fill="#C24A3C"/><text x="247" y="298" text-anchor="middle" fill="#fff" font-family="'IBM Plex Mono',monospace" font-size="8" font-weight="600" letter-spacing="1.5">BLOCKED</text></g>
+      <circle class="ret" r="1.8" fill="#F0A794" style="offset-path:path('M372,168 C350,205 325,235 297,262');"/>
+      <circle class="ret" r="1.3" fill="#F0A794" style="offset-path:path('M366,176 C346,210 322,240 300,258');animation-delay:.25s;"/>
+    </g>
+    <g class="lane2">
+      <g class="escape" style="offset-path:path('M432,168 C455,205 478,235 505,262');offset-rotate:0deg;">
+        <g class="card" transform="translate(-11,-14)">
+          <rect width="22" height="28" rx="2" fill="#E2705F"/>
+          <line x1="4" y1="9" x2="18" y2="9" stroke="#fff" stroke-width="1.4"/>
+          <line x1="4" y1="14" x2="18" y2="14" stroke="#FBD9D2" stroke-width="1.4"/>
+          <line x1="4" y1="19" x2="13" y2="19" stroke="#FBD9D2" stroke-width="1.4"/>
+        </g>
+      </g>
+      <path class="arcflash" d="M466,248 A232,117 0 0 1 540,290" fill="none" stroke="#E2705F" stroke-width="2.5" filter="url(#glow)"/>
+      <g class="btag"><rect x="524" y="286" width="62" height="17" rx="8.5" fill="#C24A3C"/><text x="555" y="298" text-anchor="middle" fill="#fff" font-family="'IBM Plex Mono',monospace" font-size="8" font-weight="600" letter-spacing="1.5">BLOCKED</text></g>
+      <circle class="ret" r="1.8" fill="#F0A794" style="offset-path:path('M432,168 C455,205 478,235 505,262');"/>
+    </g>
+
+    <!-- ===== devices: view-only screens ===== -->
+    <g font-family="'IBM Plex Mono',monospace">
+      <g transform="translate(115,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr1)"><g class="scroll" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="88" y2="30"/><line x1="30" y1="36" x2="80" y2="36"/><line x1="30" y1="42" x2="86" y2="42"/><line x1="30" y1="48" x2="74" y2="48"/><line x1="30" y1="54" x2="88" y2="54"/><line x1="30" y1="60" x2="80" y2="60"/><line x1="30" y1="66" x2="84" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">OFFICE PC</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+      <g transform="translate(340,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr2)"><g class="scroll" style="animation-delay:-2.4s" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="86" y2="30"/><line x1="30" y1="36" x2="78" y2="36"/><line x1="30" y1="42" x2="88" y2="42"/><line x1="30" y1="48" x2="76" y2="48"/><line x1="30" y1="54" x2="84" y2="54"/><line x1="30" y1="60" x2="88" y2="60"/><line x1="30" y1="66" x2="78" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">REMOTE LAPTOP</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+      <g transform="translate(565,392)">
+        <rect x="18" y="10" width="84" height="46" rx="4" fill="#0D2646" stroke="#3B5E8A" stroke-width="1.3"/>
+        <rect x="24" y="16" width="72" height="34" rx="2" fill="#11375E"/>
+        <rect x="24" y="16" width="72" height="7" fill="#0C2A4C"/>
+        <circle cx="29" cy="19.5" r="1.3" fill="#3CC6D8"/><text x="34" y="22" fill="#7FA5CB" font-size="4.5" letter-spacing="1">ENCLAVE VIEWER</text>
+        <g clip-path="url(#scr3)"><g class="scroll" style="animation-delay:-4.6s" stroke="#4C7BAB" stroke-width="1.6" opacity=".8">
+          <line x1="30" y1="30" x2="84" y2="30"/><line x1="30" y1="36" x2="88" y2="36"/><line x1="30" y1="42" x2="76" y2="42"/><line x1="30" y1="48" x2="86" y2="48"/><line x1="30" y1="54" x2="78" y2="54"/><line x1="30" y1="60" x2="86" y2="60"/><line x1="30" y1="66" x2="80" y2="66"/>
+        </g></g>
+        <text x="60" y="46" text-anchor="middle" fill="#3CC6D8" font-size="5" letter-spacing="1.5" opacity=".35" transform="rotate(-14 60 40)">VIEW ONLY</text>
+        <path d="M6,56 L114,56 L106,67 L14,67 z" fill="#102C4F" stroke="#3B5E8A" stroke-width="1.3"/>
+        <text x="60" y="88" text-anchor="middle" fill="#C7D2E2" font-size="9.5" letter-spacing="1">BYOD</text>
+        <text x="60" y="101" text-anchor="middle" fill="#7BD8A8" font-size="7.5" font-weight="600" letter-spacing="1.5">OUT OF SCOPE</text>
+      </g>
+    </g>
+  </svg>
+
+  <div class="status">
+    <span>Session encrypted &middot; FIPS 140-3 validated cryptography</span>
+    <span>0 bytes at rest on any endpoint</span>
+    <span>Every event written to the immutable audit trail</span>
+  </div>
+  <div class="wfoot">Your people see the work. <b>The data never leaves.</b></div>
+</div>
+</body>
+</html>
