@@ -459,67 +459,76 @@
 <h1>Same secure enclave. <span class="accent">Half the moving parts.</span></h1>
 <p class="sub">Most CMMC enclaves are assembled for you: GCC High licensing, a virtual desktop per user, and an MSP contract to keep it all running. RegDOX CCE is built as one platform. Here is the difference, line by line.</p>
 </div>
-<!-- interactive scope demo -->
-  <div class="demo-outer">
-    <div class="wrap" style="max-width:1040px;">
-      <div class="demo reveal in d3" id="demo">
-        <div class="demo-head">
-          <span class="t">Build your enclave &middot; two ways</span>
-          <div class="toggle" role="tablist" aria-label="Boundary comparison">
-            <button id="btn-without" class="active" aria-pressed="true">Our Competitors</button>
-            <button id="btn-with" aria-pressed="false">RegDOX CCE</button>
-          </div>
-        </div>
-        <div class="demo-count">
-          <div class="n" id="assetcount">6</div>
-          <div class="l" id="assetlabel">Components to license, harden, and administer &middot; with the MSP meter running on all of it</div>
-        </div>
-        <div class="stage">
-          <div class="boundary" aria-hidden="true">
-            <span class="bc bc1"></span><span class="bc bc2"></span><span class="bc bc3"></span><span class="bc bc4"></span>
-            <span class="blabel" id="blabel">Your Enclave Stack &middot; 6 Components</span>
-            <span class="scan"></span>
-          </div>
-          <div class="stage-grid">
-            <div class="enclave">
-              <div class="nm" id="enclave-nm">MSP-Built Enclave</div>
-              <div class="st" id="enclave-st">GCC High + VDI stack &middot; assembled for you, billed to you</div>
-              <div class="sdr-mini" aria-hidden="true"><span class="sdr-nm">Secure Data Room + Virtual Workspace</span><span class="sdr-ds">Fully Office-compatible editing &middot; one secured web session</span></div>
-            </div>
-            <div class="kvm">Secure browser &middot; keyboard, video, mouse only &middot; nothing stored</div>
-            <div class="chips">
-              <div class="dchip"><div class="nm">GCC High Licensing</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Virtual Desktop per User</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">VDI Endpoint Hardening</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Full Tenant Migration</div><div class="st">Required</div></div>
-            </div>
-            <div class="chips">
-              <div class="dchip"><div class="nm">Ongoing MSP Administration</div><div class="st">Required</div></div>
-              <div class="dchip"><div class="nm">Provisioned Partner Accounts</div><div class="st" id="st-supply2">Required</div></div>
-              
-              
-            </div>
-          </div>
-        </div>
-        <div class="stage-note" id="stagenote">Every piece is licensed, secured, and administered. <b>Toggle to see the RegDOX build.</b></div>
-      </div>
-      <p style="text-align:center;margin-top:18px;"><a href="compare-regdox.html" style="font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);text-decoration:none;">See the full comparison &rarr;</a></p>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- ===== HOW TO COMPARE (power positioning, customer-facing) ===== -->
-<section class="light light-alt" style="border-bottom:1px solid var(--line);"><div class="wrap">
-<span class="mark on-light">Before you compare</span>
-<h2 class="sectitle">Five things to know before you compare anything</h2>
-<div style="margin-top:34px;">
-<div class="bet reveal"><span class="n">01</span><div><h4>Architecture decides scope</h4><p>Where CUI lives determines what gets assessed. An enclave where CUI never lands on a device shrinks the boundary by design. One where it syncs to laptops or sits in mailboxes drags all of it in. Everything else on a vendor's feature list is downstream of this.</p></div></div>
-<div class="bet reveal d1"><span class="n">02</span><div><h4>Scope is the biggest cost in CMMC</h4><p>Assessment scope is the single largest driver of certification cost, time, and audit risk. Every asset that touches CUI is assessed against all 110 practices. Fewer in-scope assets means a cheaper, faster, lower-risk certification. Compare boundaries before you compare features.</p></div></div>
-<div class="bet reveal d2"><span class="n">03</span><div><h4>Everything is "secure." That is not the question.</h4><p>Every serious option in this market encrypts well and markets compliance hard. The question that separates them is the size of the assessment each one leaves you with, and who has to build, operate, and defend the environment that produces it.</p></div></div>
-<div class="bet reveal"><span class="n">04</span><div><h4>Not every "enclave" is the same kind of thing</h4><p>A government cloud you migrate into and operate, an encrypted overlay on your existing email, and a purpose-built enclave behave completely differently at assessment. Make sure you are comparing within the right category before comparing within it.</p></div></div>
-<div class="bet reveal d1"><span class="n">05</span><div><h4>Per-seat price is only one input to total cost</h4><p>The monthly line item is one input. The migration project, the virtual desktop stack, the ongoing services contract, and the size of the assessment are the others. Compare the total burden of owning each option for three years, not the sticker.</p></div></div>
+<!-- side-by-side enclave builds -->
+<style>
+.hbb{max-width:1020px;margin:0 auto;border:1px solid var(--line-dark);border-radius:var(--r-panel);background:linear-gradient(170deg,rgba(16,43,80,.85),rgba(11,30,60,.9));box-shadow:0 30px 90px rgba(0,0,0,.45);overflow:hidden;}
+.hbb-head{padding:16px 24px;border-bottom:1px solid var(--line-dark);font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FA6C6;text-align:center;}
+.hbb-grid{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:800px){.hbb-grid{grid-template-columns:1fr;}}
+.hbb-col{padding:24px 26px 26px;}
+.hbb-col.left{border-right:1px solid var(--line-dark);}
+@media(max-width:800px){.hbb-col.left{border-right:none;border-bottom:1px solid var(--line-dark);}}
+.hbb-lab{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;}
+.hbb-n{font-family:var(--font-display);font-weight:900;font-size:58px;letter-spacing:-0.03em;line-height:1;margin-top:12px;}
+.hbb-sub{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C6;margin-top:9px;line-height:1.7;}
+.hbb-box{margin-top:18px;border:1.5px dashed rgba(226,112,95,.55);border-radius:10px;padding:16px;animation:hbbPulseR 2.8s ease-in-out infinite;}
+.hbb-box.teal{border-color:rgba(60,198,216,.55);animation:hbbPulseT 3.4s ease-in-out infinite;}
+@keyframes hbbPulseR{0%,100%{box-shadow:0 0 0 0 rgba(226,112,95,.16);}50%{box-shadow:0 0 0 8px rgba(226,112,95,0);}}
+@keyframes hbbPulseT{0%,100%{box-shadow:0 0 0 0 rgba(60,198,216,.18);}50%{box-shadow:0 0 26px 2px rgba(60,198,216,.22);}}
+.hbb-anchor{background:var(--surface-card-dark);border:1px solid #2E4A73;border-radius:8px;padding:13px 16px;text-align:center;}
+.hbb-anchor.teal{background:var(--accent);border-color:var(--accent);}
+.hbb-anchor .nm{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.hbb-anchor .st{font-family:var(--font-mono);font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;margin-top:5px;color:#F09A86;}
+.hbb-anchor.teal .st{color:#062A32;font-weight:600;}
+.hbb-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.hbb-chip{border:1px solid #2E4A73;background:rgba(14,42,78,.5);border-radius:7px;padding:9px 11px;}
+.hbb-chip .nm{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:#E4ECF7;line-height:1.4;}
+.hbb-chip .st{font-family:var(--font-mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#F09A86;margin-top:4px;font-weight:600;}
+.hbb-none{list-style:none;margin:12px 0 0;padding:0;}
+.hbb-none li{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#9CE8F2;padding:7px 0 7px 20px;border-top:1px dotted rgba(60,198,216,.25);position:relative;}
+.hbb-none li::before{content:"✓";position:absolute;left:0;color:#3CC6D8;}
+.hbb-foot{padding:14px 24px 20px;border-top:1px solid var(--line-dark);text-align:center;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C6;}
+.hbb-foot b{color:#E8EEF6;font-weight:500;}
+</style>
+<div class="demo-outer">
+<div class="hbb reveal in">
+<div class="hbb-head">Build your enclave &middot; two ways, side by side</div>
+<div class="hbb-grid">
+<div class="hbb-col left">
+<div class="hbb-lab" style="color:#F09A86;">Our Competitors</div>
+<div class="hbb-n" style="color:var(--warn-bright);">6</div>
+<div class="hbb-sub">Components to license, harden, and administer &middot; with the MSP meter running on all of it</div>
+<div class="hbb-box">
+<div class="hbb-anchor"><div class="nm">MSP-Built Enclave</div><div class="st">GCC High + VDI stack &middot; assembled for you, billed to you</div></div>
+<div class="hbb-chips">
+<div class="hbb-chip"><div class="nm">GCC High Licensing</div><div class="st">Required</div></div>
+<div class="hbb-chip"><div class="nm">Virtual Desktop Per User</div><div class="st">Required</div></div>
+<div class="hbb-chip"><div class="nm">VDI Endpoint Hardening</div><div class="st">Required</div></div>
+<div class="hbb-chip"><div class="nm">Full Tenant Migration</div><div class="st">Required</div></div>
+<div class="hbb-chip"><div class="nm">Ongoing MSP Administration</div><div class="st">Required</div></div>
+<div class="hbb-chip"><div class="nm">Provisioned Partner Accounts</div><div class="st">Required</div></div>
+</div>
+</div>
+</div>
+<div class="hbb-col">
+<div class="hbb-lab" style="color:#7FE0EE;">RegDOX CCE</div>
+<div class="hbb-n" style="color:var(--accent-bright);">1</div>
+<div class="hbb-sub">One secured web enclave on AWS GovCloud &middot; yours to run through simple web administration</div>
+<div class="hbb-box teal">
+<div class="hbb-anchor teal"><div class="nm">RegDOX CCE</div><div class="st">One subscription &middot; everything inside</div></div>
+<ul class="hbb-none">
+<li>No GCC High licensing</li>
+<li>No virtual desktops, no per-user stack</li>
+<li>No endpoint hardening project</li>
+<li>No tenant migration</li>
+<li>No standing MSP contract</li>
+<li>Partners via DR Connect, no accounts</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="hbb-foot">Every piece on the left is licensed, secured, and administered. <b>The right is one subscription.</b></div>
+</div>
 </div>
 </div></section>
 
