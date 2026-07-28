@@ -207,9 +207,10 @@
   .badge-card img{max-height:54px;max-width:130px;width:auto;height:auto;display:block;}
 
   /* client logo grid */
-  .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px 28px;margin-top:44px;align-items:center;}
-  @media(max-width:880px){.logo-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(max-width:560px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
+  .logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px 28px;margin-top:44px;align-items:center;}
+  .logo-grid .logo-card{flex:0 0 calc(20% - 23px);}
+  @media(max-width:880px){.logo-grid .logo-card{flex:0 0 calc(33.33% - 19px);}}
+  @media(max-width:560px){.logo-grid .logo-card{flex:0 0 calc(50% - 14px);}}
   .logo-card{display:flex;align-items:center;justify-content:center;height:88px;padding:10px 14px;}
   .logo-word{font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-0.01em;color:#5B7494;opacity:.72;transition:color .2s ease,opacity .2s ease;text-align:center;line-height:1.2;}
   .logo-card:hover .logo-word{color:var(--navy);opacity:1;}
