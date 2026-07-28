@@ -493,44 +493,40 @@
 .hbb-foot{padding:18px 24px 22px;border-top:1px solid var(--line-dark);text-align:center;font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#B8CCE6;}
 .hbb-foot b{color:#E8EEF6;font-weight:500;}
 </style>
+<style>
+.hbb-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:18px 22px 6px;}
+.hbb-colhead{font-family:var(--font-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;text-align:center;border-radius:8px;}
+.hbb-colhead.msp{color:#F09A86;background:rgba(226,112,95,.08);border:1px solid rgba(226,112,95,.35);margin-right:9px;}
+.hbb-colhead.rgx{color:#7FE0EE;background:rgba(60,198,216,.08);border:1px solid rgba(60,198,216,.35);margin-left:9px;}
+.hbb-r{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:13px 22px;border-top:1px dotted #1D3049;align-items:center;}
+.hbb-rl{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#12212F;border:1px solid rgba(226,112,95,.3);border-radius:9px;padding:13px 16px;}
+.hbb-rl b{font-family:var(--font-display);font-weight:700;font-size:16.5px;color:#fff;line-height:1.25;}
+.hbb-rl i{font-style:normal;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#F09A86;font-weight:600;flex:none;}
+.hbb-rr{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#BFF0E8;line-height:1.55;padding-left:24px;position:relative;}
+.hbb-rr::before{content:"✓";position:absolute;left:2px;color:#3CC6D8;font-size:14px;}
+@media(max-width:820px){
+  .hbb-cols{grid-template-columns:1fr;padding:16px 14px 4px;}
+  .hbb-r{grid-template-columns:1fr;gap:8px;padding:12px 14px;}
+  .hbb-rl b{font-size:14.5px;}
+  .hbb-rr{font-size:11.5px;}
+  .hbb-colhead.rgx{display:none;}
+}
+</style>
+
 <div class="demo-outer">
 <div class="hbb reveal in">
 <div class="hbb-head">Build your enclave &middot; two ways, side by side</div>
-<div class="hbb-grid">
-<div class="hbb-col left">
-<div class="hbb-lab" style="color:#F09A86;">Our Competitors</div>
-<div class="hbb-n" style="color:var(--warn-bright);">6</div>
-<div class="hbb-sub">Components to license, harden, and administer &middot; with the MSP meter running on all of it</div>
-<div class="hbb-box">
-<div class="hbb-anchor"><div class="nm">MSP-Built Enclave</div><div class="st">GCC High + VDI stack &middot; assembled for you, billed to you</div></div>
-<div class="hbb-chips">
-<div class="hbb-chip"><div class="nm">GCC High Licensing</div><div class="st">Required</div></div>
-<div class="hbb-chip"><div class="nm">Virtual Desktop Per User</div><div class="st">Required</div></div>
-<div class="hbb-chip"><div class="nm">VDI Endpoint Hardening</div><div class="st">Required</div></div>
-<div class="hbb-chip"><div class="nm">Full Tenant Migration</div><div class="st">Required</div></div>
-<div class="hbb-chip"><div class="nm">Ongoing MSP Administration</div><div class="st">Required</div></div>
-<div class="hbb-chip"><div class="nm">Provisioned Partner Accounts</div><div class="st">Required</div></div>
+<div class="hbb-cols">
+<div class="hbb-colhead msp">Our Competitors &middot; What You Must Buy &amp; Run</div>
+<div class="hbb-colhead rgx">RegDOX CCE &middot; One Subscription</div>
 </div>
-</div>
-</div>
-<div class="hbb-col">
-<div class="hbb-lab" style="color:#7FE0EE;">RegDOX CCE</div>
-<div class="hbb-n" style="color:var(--accent-bright);">1</div>
-<div class="hbb-sub">One secured web enclave on AWS GovCloud &middot; yours to run through simple web administration</div>
-<div class="hbb-box teal">
-<div class="hbb-anchor teal"><div class="nm">RegDOX CCE</div><div class="st">One subscription &middot; everything inside</div></div>
-<ul class="hbb-none">
-<li>No GCC High licensing</li>
-<li>No virtual desktops, no per-user stack</li>
-<li>No endpoint hardening project</li>
-<li>No tenant migration</li>
-<li>No standing MSP contract</li>
-<li>Partners via DR Connect, no accounts</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="hbb-foot">Every piece on the left is licensed, secured, and administered. <b>The right is one subscription.</b></div>
+<div class="hbb-r"><div class="hbb-rl"><b>GCC High Licensing</b><i>Required</i></div><div class="hbb-rr">Included: secure hosting on AWS GovCloud</div></div>
+<div class="hbb-r"><div class="hbb-rl"><b>Virtual Desktop Per User</b><i>Required</i></div><div class="hbb-rr">Not needed: one secured web session does the job</div></div>
+<div class="hbb-r"><div class="hbb-rl"><b>VDI Endpoint Hardening</b><i>Required</i></div><div class="hbb-rr">Not needed: your endpoints stay out of scope</div></div>
+<div class="hbb-r"><div class="hbb-rl"><b>Full Tenant Migration</b><i>Required</i></div><div class="hbb-rr">Not needed: provisions alongside your existing IT</div></div>
+<div class="hbb-r"><div class="hbb-rl"><b>Ongoing MSP Administration</b><i>Required</i></div><div class="hbb-rr">Not needed: simple web administration, yours</div></div>
+<div class="hbb-r"><div class="hbb-rl"><b>Provisioned Partner Accounts</b><i>Required</i></div><div class="hbb-rr">Not needed: partners come in via DR Connect</div></div>
+<div class="hbb-foot">Six components, licensed and administered, on the left. <b>One subscription on the right.</b></div>
 </div>
 </div>
 </div></section>
