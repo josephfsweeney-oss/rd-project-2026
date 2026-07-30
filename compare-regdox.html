@@ -414,6 +414,16 @@
 .hbb-foot{color:#C9D6E8;}
 .card p,.pillar p{color:#3A4E68;}
 </style>
+<style>
+.hbb-caps{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:16px 22px 4px;}
+.hbb-cap{font-family:var(--font-mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;padding-bottom:9px;}
+.hbb-cap.l{color:#F09A86;border-bottom:1.5px solid rgba(226,112,95,.4);}
+.hbb-cap.r{color:#7FE0EE;border-bottom:1.5px solid rgba(60,198,216,.4);}
+.hbb-x{color:#F09A86;font-size:14px;flex:none;margin-right:2px;}
+.hbb-rl{gap:10px;}
+.hbb-rl b{flex:1;}
+@media(max-width:820px){.hbb-caps{grid-template-columns:1fr;gap:6px;}.hbb-cap.r{display:none;}}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -522,13 +532,17 @@
 
 <div class="demo-outer">
 <div class="hbb reveal in">
-<div class="hbb-head">Build your enclave &middot; two ways, side by side</div>
-<div class="hbb-r"><div class="hbb-rl"><b>Government Certified Collaboration Suite Licensing</b><i>Required</i></div><div class="hbb-rr">No productivity tool licensing required</div></div>
-<div class="hbb-r"><div class="hbb-rl"><b>Virtual Desktop Per User</b><i>Required</i></div><div class="hbb-rr">Not needed: one secured web session does the job</div></div>
-<div class="hbb-r"><div class="hbb-rl"><b>VDI Endpoint Hardening</b><i>Required</i></div><div class="hbb-rr">Not needed: your endpoints stay out of scope</div></div>
-<div class="hbb-r"><div class="hbb-rl"><b>Full Tenant Migration</b><i>Required</i></div><div class="hbb-rr">Not needed: provisions alongside your existing IT</div></div>
-<div class="hbb-r"><div class="hbb-rl"><b>Ongoing MSP Administration</b><i>Required</i></div><div class="hbb-rr">Not needed: simple web administration, yours</div></div>
-<div class="hbb-r"><div class="hbb-rl"><b>Provisioned Partner Accounts</b><i>Required</i></div><div class="hbb-rr">Not needed: partners come in via DR Connect</div></div>
+<div class="hbb-head">One enclave. Two build sheets.</div>
+<div class="hbb-caps">
+<div class="hbb-cap l">The typical build &middot; what they require</div>
+<div class="hbb-cap r">RegDOX CCE &middot; what you actually need</div>
+</div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>Government Certified Collaboration Suite Licensing</b><i>Required</i></div><div class="hbb-rr">No productivity tool licensing required</div></div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>Virtual Desktop Per User</b><i>Required</i></div><div class="hbb-rr">Not needed: one secured web session does the job</div></div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>VDI Endpoint Hardening</b><i>Required</i></div><div class="hbb-rr">Not needed: your endpoints stay out of scope</div></div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>Full Tenant Migration</b><i>Required</i></div><div class="hbb-rr">Not needed: provisions alongside your existing IT</div></div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>Ongoing MSP Administration</b><i>Required</i></div><div class="hbb-rr">Not needed: simple web administration, yours</div></div>
+<div class="hbb-r"><div class="hbb-rl"><span class="hbb-x">✕</span><b>Provisioned Partner Accounts</b><i>Required</i></div><div class="hbb-rr">Not needed: partners come in via DR Connect</div></div>
 <div class="hbb-foot">Six components, licensed and administered, on the left. <b>One subscription on the right.</b></div>
 </div>
 </div>
