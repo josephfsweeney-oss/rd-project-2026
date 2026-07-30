@@ -367,6 +367,13 @@
   @media(max-width:720px){.scopeviz .cap{font-size:17px;}}
   .scopeviz .cap b{color:var(--accent-bright);font-weight:800;}
 </style>
+<style>/* contrast pass */
+.lead{color:#31445E;}
+.page-hero .sub,.hero .sub{color:#D7E1EE;}
+.tvr2-sub{color:#B8CCE6;}
+.hbb-foot{color:#C9D6E8;}
+.card p,.pillar p{color:#3A4E68;}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -479,10 +486,9 @@
 <line x1="614" y1="249" x2="766" y2="249" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" marker-start="url(#arrL)" opacity=".85"/>
 <line x1="614" y1="349" x2="766" y2="349" stroke="#3CC6D8" stroke-width="1.6" stroke-dasharray="5 6" marker-start="url(#arrL)" opacity=".85"/>
 <!-- DR Connect lane -->
-<line x1="614" y1="461" x2="659" y2="461" stroke="#3CC6D8" stroke-width="1.8" marker-start="url(#arrL)"/>
-<line x1="801" y1="461" x2="766" y2="461" stroke="#3CC6D8" stroke-width="1.8" marker-end="url(#arrR)"/>
-<rect x="659" y="443" width="142" height="36" rx="18" fill="#7FE0EE"/>
-<text x="730" y="466" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="700" letter-spacing="2" fill="#062A32">DR CONNECT</text>
+<line x1="614" y1="461" x2="766" y2="461" stroke="#3CC6D8" stroke-width="1.8" marker-start="url(#arrL)" marker-end="url(#arrR)"/>
+<rect x="622" y="482" width="140" height="34" rx="17" fill="#7FE0EE"/>
+<text x="692" y="504" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="700" letter-spacing="2" fill="#062A32">DR CONNECT</text>
 </svg>
 <div class="cap">CUI never leaves the enclave, <b>so every device stays outside the CUI boundary.</b></div>
 </div>
@@ -528,7 +534,7 @@
 <section class="light"><div class="wrap">
 <span class="mark on-light">In and out</span>
 <h2 class="sectitle">CUI enters the enclave. It never touches your network.</h2>
-<p class="lead">You can control where your own people put CUI. You cannot control what arrives. CUI reaches you two ways: suppliers and customers send it to you by email, and your own people download it from prime contractors' portals and government sites like SAM.gov. Both paths share one failure mode: the file lands in an ordinary mailbox or on a laptop, outside the boundary, before anyone notices. CCE closes both.</p>
+<p class="lead">You can control where your own people put CUI. You cannot control what arrives. CUI reaches you two ways: suppliers and customers send it to you by email, and your own people download it from prime contractors' portals and government sites. Both paths share one failure mode: the file lands in an ordinary mailbox or on a laptop, outside the boundary, before anyone notices. CCE closes both.</p>
 <div class="cards3" style="grid-template-columns:1fr 1fr;">
 <div class="card reveal"><span class="klabel">The supplier push &middot; DR Connect</span><h4>Sent straight into the room</h4><p>Each customer or vendor gets a unique email address tied to a designated data room inside your enclave. They send CUI to that address and it lands directly in the compliant room, never in a corporate mailbox, never on your network. Nothing for the third party to buy, install, or license. You get an instant notification and work it from inside the enclave.</p></div>
 <div class="card reveal d1"><span class="klabel">The portal pull &middot; in-enclave browsing</span><h4>Downloaded inside the boundary</h4><p>When a prime says "pull your technical data package from our portal," that download has to land somewhere. In CCE, your people browse external portals from a contained secure-browsing utility inside the enclave, so the file lands inside the boundary and never touches the device.</p></div>
@@ -545,7 +551,7 @@
 <h2 class="sectitle">The engineered default, live</h2>
 <div class="fear-grid">
 <div class="fear-body reveal">
-<p>Every "we block downloads" claim in this market is a policy until you watch it enforced. Inside the CCE, the session opens files in the enclave viewer, edits happen inside the enclave, and every attempt to pull CUI onto the device, download, clipboard, drive, print, is stopped at the wall and written to the audit trail.</p>
+<p>Every "we block downloads" claim in this market is a policy until you watch it enforced. Inside the CCE, the session opens files in the enclave viewer, edits happen inside the enclave, and the CUI is never pulled onto the device.</p>
 <p><strong>Nothing lands on the device. Everything lands in the log.</strong> That is what an assessor means by an engineered default, and it is why the boundary holds without your team defending a hundred settings.</p>
 </div>
 <div class="reveal d1">
@@ -564,12 +570,8 @@
 <!-- ===== BUILT TO FIT ===== -->
 <section class="light light-alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);"><div class="wrap">
 <span class="mark on-light">Built to fit</span>
-<h2 class="sectitle" style="font-size:32px;">Shaped to how you actually run</h2>
-<div class="cards3">
-<div class="card reveal"><span class="klabel">Licensing</span><h4>Per-diem user billing</h4><p>Usage billing applies only for the days a licensed user is granted access. Vendors, customers, and reviewers who touch CUI intermittently cost you when they work, not when they don't.</p></div>
-<div class="card reveal d1"><span class="klabel">Applications</span><h4>Your tools, hosted inside</h4><p>Choose which applications come into the enclave, licensed by us or by you, running beside the data so editing is latency-free and CUI never travels to the tool. Users see only the applications and content assigned to them, and nothing more.</p></div>
-<div class="card reveal d2"><span class="klabel">Infrastructure</span><h4>Shared or dedicated</h4><p>Run on shared infrastructure or take a dedicated instance no other organization touches, with IP-restricted access and specifications adjustable in minutes, not procurement cycles.</p></div>
-</div>
+<h2 class="sectitle" style="font-size:34px;">Your tools, hosted inside the enclave</h2>
+<p class="lead" style="max-width:56em;">Whatever your team uses to get the work done can be hosted inside the enclave, beside the data and under the same controls. The work happens where the CUI lives, and nothing has to leave the boundary to be useful.</p>
 </div></section>
 
 
@@ -578,9 +580,9 @@
 <h2 class="sectitle">Built for the people who have to prove it</h2>
 <p class="lead" style="margin-left:auto;margin-right:auto;">A failed assessment isn't abstract. It's a lost contract and a name attached to it. CCE is designed around the three people who carry that weight.</p>
 <div class="who-grid" style="text-align:left;">
-<div class="card reveal"><span class="klabel">Compliance &middot; ISSO</span><h4>Evidence, not assurances</h4><p>Information rights management, watermarking, expiry, and an immutable audit trail on every file. It's the difference between "we say we're controlled" and "here's the proof," and it's what an assessor wants to see.</p></div>
+<div class="card reveal"><span class="klabel">Compliance</span><h4>Evidence, not assurances</h4><p>Information rights management, watermarking, expiry, and an immutable audit trail on every file. It's the difference between "we say we're controlled" and "here's the proof," and it's what an assessor wants to see.</p></div>
 <div class="card reveal d1"><span class="klabel">Information Security</span><h4>A boundary you can defend</h4><p>The out-of-scope posture is the engineered default: no downloads, no clipboard, no drive or printer redirection. You inherit a lockdown that holds, instead of assembling one and defending every setting at assessment.</p></div>
-<div class="card reveal d2"><span class="klabel">IT</span><h4>Nothing new to babysit</h4><p>Nothing to stand up, patch, or operate. The enclave sits alongside the systems you already run, users reach it through a browser, and your existing workflows and commercial tenant stay untouched.</p></div>
+<div class="card reveal d2"><span class="klabel">IT</span><h4>No new IT infrastructure to administer</h4><p>Nothing to stand up, patch, or operate. The enclave sits alongside the systems you already run, users reach it through a browser, and your existing workflows and commercial tenant stay untouched.</p></div>
 </div>
 </div></section>
 
